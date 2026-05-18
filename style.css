@@ -886,20 +886,7 @@ a:active {
 
 /* ===== MOBILE ANPASSUNGEN ===== */
 @media (max-width: 768px) {
-  .site-footer {
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-  }
-  .footer-nav {
-    flex-direction: column;
-    gap: 6px;
-    align-items: center;
-  }
-  .footer-branding {
-    margin-top: 30px;
-  }
+  
   .container {
     flex-direction: column;
   }
