@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NoGood Design</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-top">
+    <a href="main.html"><img src="data/Logo/NikolaiGerbersDesignarchiv_Logo.png" class="logo-header"></a>
+    <button class="burger-btn" id="burgerBtn" aria-label="Menü öffnen">
+      <img src="data/Icons/BurgerMenuIcon.PNG" alt="Menü" />
+    </button>
+  </div>
+  <nav class="header-nav">
+    <ul>
+      <li><a href="produkte.html">Produkte</a></li>
+      <li><a href="hersteller_designer.html">Hersteller & Designer</a></li>
+      <li><a href="informationen.html">Informationen</a></li>
+    </ul>
+  </nav>
+</header>
+
+
+<!-- Overlay -->
+<div class="nav-overlay" id="navOverlay">
+  <div class="nav-drawer" id="navDrawer">
+    <button class="drawer-close" id="drawerClose" aria-label="Menü schließen">✕</button>
+    <nav>
+      <ul>
+        <li><a href="produkte.html">Produkte</a></li>
+        <li><a href="hersteller_designer.html">Hersteller & Designer</a></li>
+        <li><a href="informationen.html">Informationen</a></li>
+      </ul>
+    </nav>
+  </div>
+</div>
+
+<main class="produkte-main">
+  <div class="products-header">
+    <h1>Produkte</h1>
+    <button class="filter-toggle">Filter</button>
+  </div>
+
+  <!-- Desktop Filter -->
+  <div class="filter-bar">
+    <div class="filter-box" data-type="category">
+      <div class="filter-box-header">
+        <span>Filtern nach Kategorie</span>
+        <span class="clear-btn">×</span>
+      </div>
+      <ul class="dropdown"></ul>
+    </div>
+    <div class="filter-box" data-type="manufacturer">
+      <div class="filter-box-header">
+        <span>Filtern nach Hersteller</span>  <!-- ← war leer -->
+        <span class="clear-btn">×</span>
+      </div>
+      <ul class="dropdown"></ul>
+    </div>
+    <div class="filter-box" data-type="designer">
+      <div class="filter-box-header">
+        <span>Filtern nach Designer</span>
+        <span class="clear-btn">×</span>
+      </div>
+      <ul class="dropdown"></ul>
+    </div>
+    <div class="filter-box" data-type="sort">
+      <div class="filter-box-header">
+        <span>Sortieren nach</span>
+        <span class="clear-btn">×</span>
+      </div>
+      <ul class="dropdown">
+        <li data-sort="Neueste">Neueste</li>
+        <li data-sort="Höchster Preis">Höchster Preis</li>
+        <li data-sort="Niedrigster Preis">Niedrigster Preis</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Mobil Modal -->
+  <div class="filter-modal">
+    <div class="filter-content">
+      <span class="close-filter">&times;</span>
+      <div class="filter-bar">
+        <div class="filter-box" data-type="category">
+          <div class="filter-box-header">
+            <span>Filtern nach Kategorie</span>
+            <span class="clear-btn">×</span>
+          </div>
+          <ul class="dropdown"></ul>
+        </div>
+        <div class="filter-box" data-type="manufacturer">
+          <div class="filter-box-header">
+            <span>Filtern nach Hersteller</span>
+            <span class="clear-btn">×</span>
+          </div>
+          <ul class="dropdown"></ul>
+        </div>
+        <div class="filter-box" data-type="designer">
+          <div class="filter-box-header">
+            <span>Filtern nach Designer</span>
+            <span class="clear-btn">×</span>
+          </div>
+          <ul class="dropdown"></ul>  <!-- ← war </div> statt </ul></div> -->
+        </div>
+        <div class="filter-box" data-type="sort">
+          <div class="filter-box-header">
+            <span>Sortieren nach</span>
+            <span class="clear-btn">×</span>
+          </div>
+          <ul class="dropdown">
+            <li data-sort="Neueste">Neueste</li>
+            <li data-sort="Höchster Preis">Höchster Preis</li>
+            <li data-sort="Niedrigster Preis">Niedrigster Preis</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="image-grid"></section>
+</main>
+<footer class="site-footer">
+  <ul class="footer-nav">
+    <li><a href="kontakt.html">Kontakt</a></li>
+    <li><a href="impressum.html">Impressum</a></li>
+  </ul>
+
+  <span class="footer-branding">Nikolai Gerbers - Designarchiv</span>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

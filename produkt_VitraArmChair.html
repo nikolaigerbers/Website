@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NoGood Design</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-top">
+    <a href="main.html"><img src="data/Logo/NikolaiGerbersDesignarchiv_Logo.png" class="logo-header"></a>
+    <button class="burger-btn" id="burgerBtn" aria-label="Menü öffnen">
+      <img src="data/Icons/BurgerMenuIcon.PNG" alt="Menü" />
+    </button>
+  </div>
+  <nav class="header-nav">
+    <ul>
+      <li><a href="produkte.html">Produkte</a></li>
+      <li><a href="hersteller_designer.html">Hersteller & Designer</a></li>
+      <li><a href="informationen.html">Informationen</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- Overlay -->
+<div class="nav-overlay" id="navOverlay">
+  <div class="nav-drawer" id="navDrawer">
+    <button class="drawer-close" id="drawerClose" aria-label="Menü schließen">✕</button>
+    <nav>
+      <ul>
+        <li><a href="produkte.html">Produkte</a></li>
+        <li><a href="hersteller_designer.html">Hersteller & Designer</a></li>
+        <li><a href="informationen.html">Informationen</a></li>
+      </ul>
+    </nav>
+  </div>
+</div>
+
+<!-- <main class="product-page">
+      <img src="data/Produktbilder/VitraEA208_1-Photoroom.png" alt="1. Produktbild VitraEA208" />
+      <img src="data/Produktbilder/VitraEA208_2-Photoroom.png" alt="2. Produktbild VitraEA208" />
+      <img src="data/Produktbilder/VitraEA208_3-Photoroom.png" alt="3. Produktbild VitraEA208" />
+      <img src="data/Produktbilder/VitraEA208_4-Photoroom.png" alt="4. Produktbild VitraEA208" />
+      <img src="data/Produktbilder/VitraEA208_5-Photoroom.png" alt="5. Produktbild VitraEA208" />
+      <img src="data/Produktbilder/VitraEA208_6-Photoroom.png" alt="6. Produktbild VitraEA208" />
+      <img src="data/Produktbilder/VitraEA208_7-Photoroom.png" alt="7. Produktbild VitraEA208" />
+</main>-->
+
+<main class="container">
+  <div class="left">
+    <div class="slider">
+  <button class="slider-btn prev">&#10094;</button>
+
+  <div class="slides">
+    <img src="data/Produktbilder/VitraArmChair_1-Photoroom.png" alt="1. Produktbild Vitra Arm Chair" />
+    <img src="data/Produktbilder/VitraArmChair_2-Photoroom.png" alt="2. Produktbild Vitra Arm Chair" />
+    <img src="data/Produktbilder/VitraArmChair_3-Photoroom.png" alt="3. Produktbild Vitra Arm Chair" />
+    <img src="data/Produktbilder/VitraArmChair_4-Photoroom.png" alt="4. Produktbild Vitra Arm Chair" />
+    <img src="data/Produktbilder/VitraArmChair_5-Photoroom.png" alt="5. Produktbild Vitra Arm Chair" />
+    <img src="data/Produktbilder/VitraArmChair_6-Photoroom.png" alt="6. Produktbild Vitra Arm Chair" />
+    <img src="data/Produktbilder/VitraArmChair_7-Photoroom.png" alt="7. Produktbild Vitra Arm Chair" />
+  </div>
+
+  <button class="slider-btn next">&#10095;</button>
+</div>
+  </div>
+  <div class="right">
+    <a href="produkte.html?manufacturer=Vitra">Vitra</a>
+    <h2>Plastic Arm Chair</h2>
+    <p> von <a href="produkte.html?designer=Charles+und+Ray+Eames">Charles und Ray Eames</a> </p>
+    <div class="preis-ort">
+  <h3>320,00 €</h3>
+  <p>Abholung in Bremen, 28219</p>
+</div>
+ <p>Lieferung per Spedition gegen Aufpreis möglich.</p>
+    <div class="produkt-sektion">
+      <button class="produkt-sektion-toggle" aria-expanded="false">
+        <span><strong>Beschreibung</strong></span>
+        <span class="produkt-sektion-pfeil">&#8964;</span>
+      </button>
+      <div class="produkt-sektion-inhalt">
+      <p>Der Thonet 214 Bugholzstuhl ist ein zeitloser Designklassiker und gilt als Ikone der Kaffeehauskultur. Mit seiner charakteristischen Bugholz-Technik, der klaren Formensprache und der handwerklichen Verarbeitung verbindet er traditionelle Handwerkskunst mit industrieller Fertigung. Der elegante Stuhl überzeugt durch seine leichte, stabile Konstruktion und fügt sich sowohl in klassische als auch moderne Einrichtungen harmonisch ein. Seit über 150 Jahren steht der Thonet 214 für Qualität, Funktionalität und stilvolle Ästhetik.</p>
+      </div>
+    </div>
+
+  <div class="produkt-sektion">
+    <button class="produkt-sektion-toggle" aria-expanded="false">
+      <span><strong>Details</strong></span>
+      <span class="produkt-sektion-pfeil">&#8964;</span>
+    </button>
+    <div class="produkt-sektion-inhalt">
+      <p>Farbe: Schwarz, Beige</p>
+      <p>Material: Holz, Rattan-Geflecht</p>
+      <p>Abmessungen:<br>Höhe:<br>Tiefe:<br>Breite:<br>Sitzhöhe:</p>
+    </div>
+  </div>
+
+  <div class="produkt-sektion">
+    <button class="produkt-sektion-toggle" aria-expanded="false">
+      <span><strong>Zustand</strong></span>
+      <span class="produkt-sektion-pfeil">&#8964;</span>
+    </button>
+    <div class="produkt-sektion-inhalt">
+      <p>Gut</p>
+      <p>Der Stuhl befindet sich in einem guten Zustand. Das Rattan-Geflecht wurde bereits ersetzt und es gibt keine Beeinträchtigungen bei der Nutzung. Lediglich das Holzgestellt hat kleinere Kratzer und Schrammen, welche die Funktion aber keineswegs beeinträchtigen.</p>
+    </div>
+  </div>
+
+</br></br>
+
+  <a href="kontakt.html" class="anfrage-btn">Produkt anfragen</a>
+  <p>Verkäufe erfolgen ausschließlich nach individueller Bestätigung.</p>
+
+  </div>
+</main>
+
+<footer class="site-footer">
+  <ul class="footer-nav">
+    <li><a href="kontakt.html">Kontakt</a></li>
+    <li><a href="impressum.html">Impressum</a></li>
+  </ul>
+
+  <span class="footer-branding">Nikolai Gerbers - Designarchiv</span>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
