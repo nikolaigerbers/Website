@@ -115,7 +115,7 @@ const products = [
   },
   {
     id: 6,
-    name: "Eames Plastic Side Chair RE DSS",
+    name: "Eames Plastic Side Chair DSS",
     manufacturer: "Vitra",
     designer: "Charles und Ray Eames",
     price: 250,
