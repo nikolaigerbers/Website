@@ -37,7 +37,7 @@ productSliders.forEach(slider => {
 const products = [
   {
     id: 1,
-    name: "Plastic Armchair DAX",
+    name: "Eames Plastic Armchair DAX",
     manufacturer: "Vitra",
     designer: "Charles und Ray Eames",
     price: 320,
