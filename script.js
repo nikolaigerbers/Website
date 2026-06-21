@@ -79,9 +79,9 @@ const products = [
   },
   {
     id: 3,
-    name: "EA 208",
+    name: "Soft Pad Chair EA 208",
     manufacturer: "Vitra",
-    designer: "Herman Miller",
+    designer: "Charles und Ray Eames",
     price: 600,
     category: "Sitzmöbel",
     image: "data/Produktbilder/VitraEA208_1-Photoroom.png",
