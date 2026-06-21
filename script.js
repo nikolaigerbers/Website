@@ -67,7 +67,7 @@ const products = [
   },
   {
     id: 2,
-    name: "SE 68 Chair",
+    name: "SE 68 Stuhl",
     manufacturer: "Wilde + Spieth",
     designer: "Egon Eiermann",
     price: 160,
