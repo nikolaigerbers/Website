@@ -67,7 +67,7 @@ const products = [
   },
   {
     id: 2,
-    name: "SE 68",
+    name: "SE 68 Chair",
     manufacturer: "Wilde + Spieth",
     designer: "Egon Eiermann",
     price: 160,
@@ -103,7 +103,7 @@ const products = [
   },
   {
     id: 5,
-    name: "Egoa",
+    name: "Egoa Sidechair",
     manufacturer: "Stua",
     designer: "Josep Mora",
     price: 180,
