@@ -877,7 +877,6 @@ a:active {
   display: flex;
   align-items: center;
   position: relative;
-  top: -4px;        /* ← manuell nach oben/unten justieren */
 }
 
 .produkt-sektion-inhalt {
