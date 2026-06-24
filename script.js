@@ -586,3 +586,81 @@ document.querySelectorAll(".produkt-sektion-toggle").forEach(toggle => {
   });
 });
 
+// =====================
+// FULLSCREEN SLIDER
+// =====================
+
+document.querySelectorAll(".slider").forEach(slider => {
+  const images = slider.querySelectorAll(".slides img");
+  const fullscreenBtn = slider.closest(".left")?.querySelector(".fullscreen-btn");
+  const overlay = document.getElementById("fullscreenOverlay");
+  const fullscreenSlides = overlay?.querySelector(".fullscreen-slides");
+  const closeBtn = document.getElementById("fullscreenClose");
+  const prevBtn = overlay?.querySelector(".fullscreen-prev");
+  const nextBtn = overlay?.querySelector(".fullscreen-next");
+
+  if (!fullscreenBtn || !overlay || !fullscreenSlides) return;
+
+  let currentIndex = 0;
+
+  function openFullscreen(startIndex) {
+    fullscreenSlides.innerHTML = "";
+
+    images.forEach(img => {
+      const clone = document.createElement("img");
+      clone.src = img.src;
+      clone.alt = img.alt;
+      clone.style.display = "none";
+      fullscreenSlides.appendChild(clone);
+    });
+
+    currentIndex = startIndex;
+    showFullscreenSlide(currentIndex);
+    overlay.classList.add("open");
+    document.body.style.overflow = "hidden";
+  }
+
+  function showFullscreenSlide(i) {
+    const imgs = fullscreenSlides.querySelectorAll("img");
+    imgs.forEach((img, idx) => {
+      img.style.display = idx === i ? "block" : "none";
+    });
+  }
+
+  // Sync mit aktivem Slider-Bild
+  function getCurrentSliderIndex() {
+    let idx = 0;
+    images.forEach((img, i) => {
+      if (img.style.display === "block") idx = i;
+    });
+    return idx;
+  }
+
+  fullscreenBtn.addEventListener("click", () => {
+    openFullscreen(getCurrentSliderIndex());
+  });
+
+  closeBtn?.addEventListener("click", () => {
+    overlay.classList.remove("open");
+    document.body.style.overflow = "";
+  });
+
+  overlay?.addEventListener("click", (e) => {
+    if (e.target === overlay) {
+      overlay.classList.remove("open");
+      document.body.style.overflow = "";
+    }
+  });
+
+  nextBtn?.addEventListener("click", () => {
+    const imgs = fullscreenSlides.querySelectorAll("img");
+    currentIndex = (currentIndex + 1) % imgs.length;
+    showFullscreenSlide(currentIndex);
+  });
+
+  prevBtn?.addEventListener("click", () => {
+    const imgs = fullscreenSlides.querySelectorAll("img");
+    currentIndex = (currentIndex - 1 + imgs.length) % imgs.length;
+    showFullscreenSlide(currentIndex);
+  });
+});
