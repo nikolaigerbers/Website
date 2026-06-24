@@ -568,7 +568,7 @@ document.querySelectorAll(".produkt-sektion-toggle").forEach(toggle => {
     const offen = sektion.classList.toggle("offen");
 
     toggle.setAttribute("aria-expanded", offen);
-    pfeil.style.transform = offen ? "rotate(180deg)" : "rotate(0deg)";
+    pfeil.style.transform = offen ? "rotate(0deg)" : "rotate(180deg)";
   });
 });
 

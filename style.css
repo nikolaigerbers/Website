@@ -877,6 +877,8 @@ a:active {
   display: flex;
   align-items: center;
   position: relative;
+  display: inline-block; /* wichtig damit transform funktioniert */
+  transform: rotate(180deg); /* Standard: nach unten */
 }
 
 .produkt-sektion-inhalt {
