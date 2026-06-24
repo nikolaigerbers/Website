@@ -249,28 +249,33 @@ function bindDropdownItems() {
   document.querySelectorAll("[data-category], [data-manufacturer], [data-designer], [data-sort]").forEach(item => {
 
     item.addEventListener("pointerup", (e) => {
-      e.preventDefault();
-      e.stopPropagation();
+  e.preventDefault();
+  e.stopPropagation();
 
-      const box = item.closest(".filter-box");
-      const type = item.dataset.category ? "category"
-        : item.dataset.manufacturer ? "manufacturer"
-        : item.dataset.designer ? "designer"
-        : "sort";
+  const box = item.closest(".filter-box");
+  const type = item.dataset.category ? "category"
+    : item.dataset.manufacturer ? "manufacturer"
+    : item.dataset.designer ? "designer"
+    : "sort";
 
-      const value = item.dataset[type];
+  const value = item.dataset[type];
 
-      if (activeFilters[type] === value) {
-        activeFilters[type] = null;
-      } else {
-        activeFilters[type] = value;
-      }
+  if (activeFilters[type] === value) {
+    activeFilters[type] = null;
+  } else {
+    activeFilters[type] = value;
+  }
 
-      // Dropdown schließen
-      box.classList.remove("open");
+  box.classList.remove("open");
 
-      applyFilters();
-    });
+  // Modal schließen nach Auswahl
+  const modalEl = document.querySelector(".filter-modal");
+  if (modalEl && modalEl.style.display === "block") {
+    modalEl.style.display = "none";
+  }
+
+  applyFilters();
+});
   });
 }
 
@@ -317,6 +322,7 @@ function applyFilters() {
   syncAllFilterUI();
   buildDropdowns();          // Optionen der Dropdowns neu berechnen
   updateActiveFiltersUI();
+  updateFilterToggleLabel();
 }
 
 
@@ -446,6 +452,14 @@ modal?.addEventListener("click", (e) => {
     closeAllDropdowns();
   }
 });
+
+function updateFilterToggleLabel() {
+  const btn = document.querySelector(".filter-toggle");
+  if (!btn) return;
+
+  const count = Object.values(activeFilters).filter(v => v !== null).length;
+  btn.textContent = count > 0 ? `Filter (${count})` : "Filter";
+}
 
 
 // =====================
