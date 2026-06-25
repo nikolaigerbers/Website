@@ -591,14 +591,11 @@ a:active {
   gap: 0;
 }
 
-.neuheiten-slider .slider-btn {
-    padding: 10px 8px; /* war: 10px 20px */
-  }
-
-  .neuheiten-slider .image-grid {
-    padding: 10px 4px; /* war: padding: 10px 0 – noch etwas enger zum Rand */
-    gap: 12px;         /* war: 30px – Grid-Lücke zwischen den Karten */
-  }
+.neuheiten-slider .image-grid {
+  flex: 1;
+  margin: 0;
+  padding: 10px 0;
+}
 
 .neuheiten-slider .slider-btn.neuheiten-prev {
   transform: rotate(-90deg);
@@ -1186,5 +1183,14 @@ a:active {
   }
   .produkt-sektion-toggle span:first-child {
     order: 1;
+  }
+
+  .neuheiten-slider .slider-btn {
+    padding: 10px 8px; /* war: 10px 20px */
+  }
+
+  .neuheiten-slider .image-grid {
+    padding: 10px 4px; /* war: padding: 10px 0 – noch etwas enger zum Rand */
+    gap: 12px;         /* war: 30px – Grid-Lücke zwischen den Karten */
   }
 }
