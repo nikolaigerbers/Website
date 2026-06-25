@@ -248,7 +248,7 @@ function bindDropdownItems() {
 
   document.querySelectorAll("[data-category], [data-manufacturer], [data-designer], [data-sort]").forEach(item => {
 
-    item.addEventListener("click", (e) => {
+    item.addEventListener("pointerup", (e) => {
   e.preventDefault();
   e.stopPropagation();
 
@@ -377,22 +377,19 @@ function resetFilters() {
 // Filter-Box öffnen/schließen
 // =====================
 
-document.querySelectorAll(".filter-box").forEach(box => {
-  if (box.closest(".filter-modal")) return;
+document.addEventListener("pointerdown", (e) => {
+  const clickedBox = e.target.closest(".filter-box");
 
-  box.addEventListener("mouseleave", () => {
-    if (window.matchMedia("(min-width: 769px)").matches) {
+  document.querySelectorAll(".filter-box").forEach(box => {
+    // Schließe alle Boxen die nicht angeklickt wurden
+    if (box !== clickedBox) {
       box.classList.remove("open");
     }
   });
-});
 
-document.addEventListener("click", (e) => {
-  const clickedBox = e.target.closest(".filter-box");
-
-  if (!clickedBox) return;
-  if (e.target.closest(".dropdown")) return;
-  if (e.target.closest(".clear-btn")) return;
+  if (!clickedBox) return; // Klick außerhalb → alle schon geschlossen
+  if (e.target.closest(".dropdown")) return; // Klick auf Option → bleibt offen bis applyFilters()
+  if (e.target.closest(".clear-btn")) return; // Clear-Button → kein Toggle
 
   clickedBox.classList.toggle("open");
 });
