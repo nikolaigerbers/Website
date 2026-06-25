@@ -377,7 +377,7 @@ function resetFilters() {
 // Filter-Box öffnen/schließen
 // =====================
 
-document.addEventListener("pointerdown", (e) => {
+document.addEventListener("click", (e) => {
   const clickedBox = e.target.closest(".filter-box");
 
   // Dropdown schließen wenn Maus die Box verlässt (nur Desktop)
