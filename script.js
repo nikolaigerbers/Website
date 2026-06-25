@@ -466,16 +466,47 @@ function updateFilterToggleLabel() {
 // Neueste (Startseite)
 // =====================
 
-function renderNewest() {
-  const isMobile = window.matchMedia("(max-width: 768px)").matches;
+let neuheitenIndex = 0;
 
+function renderNewest() {
+  if (!document.querySelector(".main-main")) return;
+
+  const isMobile = window.matchMedia("(max-width: 768px)").matches;
   const count = isMobile ? 2 : 3;
 
   const sorted = [...products].sort(
     (a, b) => new Date(b.uploadDate) - new Date(a.uploadDate)
   );
 
-  renderProducts(sorted.slice(0, count));
+  const total = sorted.length;
+  const visible = [];
+  for (let i = 0; i < count; i++) {
+    visible.push(sorted[(neuheitenIndex + i) % total]);
+  }
+
+  renderProducts(visible);
+}
+
+function initNeuheiten() {
+  const prevBtn = document.querySelector(".neuheiten-prev");
+  const nextBtn = document.querySelector(".neuheiten-next");
+
+  const sorted = [...products].sort(
+    (a, b) => new Date(b.uploadDate) - new Date(a.uploadDate)
+  );
+  const total = sorted.length;
+
+  nextBtn?.addEventListener("click", () => {
+    neuheitenIndex = (neuheitenIndex + 1) % total;
+    renderNewest();
+  });
+
+  prevBtn?.addEventListener("click", () => {
+    neuheitenIndex = (neuheitenIndex - 1 + total) % total;
+    renderNewest();
+  });
+
+  renderNewest();
 }
 
 
@@ -500,7 +531,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Startseite
   if (document.querySelector(".main-main")) {
-    renderNewest();
+    initNeuheiten();
   }
 });
 

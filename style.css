@@ -584,6 +584,29 @@ a:active {
 }
 
 /* Buttons */
+
+.neuheiten-slider {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+.neuheiten-slider .image-grid {
+  flex: 1;
+  margin: 0;
+  padding: 10px 0;
+}
+
+.neuheiten-slider .slider-btn.neuheiten-prev {
+  transform: rotate(-90deg);
+  flex-shrink: 0;
+}
+
+.neuheiten-slider .slider-btn.neuheiten-next {
+  transform: rotate(90deg);
+  flex-shrink: 0;
+}
+
 .photo-slider button {
   position: absolute;
   top: 50%;
