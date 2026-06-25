@@ -377,22 +377,29 @@ function resetFilters() {
 // Filter-Box öffnen/schließen
 // =====================
 
-document.addEventListener("pointerdown", (e) => {
-  const clickedBox = e.target.closest(".filter-box");
+document.querySelectorAll(".filter-box:not(.filter-modal .filter-box)").forEach(box => {
+  const header = box.querySelector(".filter-box-header");
 
-  document.querySelectorAll(".filter-box").forEach(box => {
-    if (box !== clickedBox) {
-      box.classList.remove("open");
+  // Öffnen/Schließen per Klick auf Header
+  header.addEventListener("click", (e) => {
+    if (e.target.closest(".clear-btn")) return;
+    
+    const isOpen = box.classList.contains("open");
+    
+    // Alle anderen schließen
+    document.querySelectorAll(".filter-box:not(.filter-modal .filter-box)").forEach(b => {
+      b.classList.remove("open");
+    });
+
+    if (!isOpen) {
+      box.classList.add("open");
     }
   });
 
-  if (!clickedBox) return;
-  if (e.target.closest(".dropdown")) return;
-  if (e.target.closest(".clear-btn")) return;
-
-  // Wenn die Box schon offen ist und man auf den Header klickt → schließen
-  // Wenn sie zu ist → öffnen
-  clickedBox.classList.toggle("open");
+  // Schließen wenn Maus die Box verlässt
+  box.addEventListener("mouseleave", () => {
+    box.classList.remove("open");
+  });
 });
 
 
