@@ -248,7 +248,7 @@ function bindDropdownItems() {
 
   document.querySelectorAll("[data-category], [data-manufacturer], [data-designer], [data-sort]").forEach(item => {
 
-    item.addEventListener("pointerup", (e) => {
+    item.addEventListener("click", (e) => {
   e.preventDefault();
   e.stopPropagation();
 

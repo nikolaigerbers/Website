@@ -532,6 +532,9 @@ a:active {
   -webkit-tap-highlight-color: transparent;
   padding: 8px 15px;
   text-align: left;         /* ← Einträge linksbündig */
+  display: block;        /* ← neu */
+  width: 100%;           /* ← neu */
+  box-sizing: border-box; /* ← neu */
 }
 
 .dropdown li:hover {
