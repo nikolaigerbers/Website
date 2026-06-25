@@ -518,23 +518,26 @@ a:active {
   display: none;
   position: absolute;
   top: 100%;
-  left: -1px;           /* ← 1px nach links verschieben */
+  left: -1px;
   list-style: none;
   padding: 10px 0;
   margin: 0;
   border: 1px solid black;
   background: white;
-  min-width: calc(100% + 2px);  /* ← 2px breiter für die Borders */
+  min-width: calc(100% + 2px);
+  z-index: 100;
 }
 
 .dropdown li {
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
   padding: 8px 15px;
-  text-align: left;         /* ← Einträge linksbündig */
-  display: block;        /* ← neu */
-  width: 100%;           /* ← neu */
-  box-sizing: border-box; /* ← neu */
+  text-align: left;
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .dropdown li:hover {
