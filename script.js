@@ -248,7 +248,7 @@ function bindDropdownItems() {
 
   document.querySelectorAll("[data-category], [data-manufacturer], [data-designer], [data-sort]").forEach(item => {
 
-    item.addEventListener("pointerup", (e) => {
+    item.addEventListener("click", (e) => {
   e.preventDefault();
   e.stopPropagation();
 
@@ -377,12 +377,9 @@ function resetFilters() {
 // Filter-Box öffnen/schließen
 // =====================
 
-document.addEventListener("click", (e) => {
-  const clickedBox = e.target.closest(".filter-box");
-
-  // Dropdown schließen wenn Maus die Box verlässt (nur Desktop)
 document.querySelectorAll(".filter-box").forEach(box => {
-  if (box.closest(".filter-modal")) return; // Mobile Modal ausnehmen
+  if (box.closest(".filter-modal")) return;
+
   box.addEventListener("mouseleave", () => {
     if (window.matchMedia("(min-width: 769px)").matches) {
       box.classList.remove("open");
@@ -390,9 +387,12 @@ document.querySelectorAll(".filter-box").forEach(box => {
   });
 });
 
-  if (!clickedBox) return; // Klick außerhalb → alle schon geschlossen
-  if (e.target.closest(".dropdown")) return; // Klick auf Option → bleibt offen bis applyFilters()
-  if (e.target.closest(".clear-btn")) return; // Clear-Button → kein Toggle
+document.addEventListener("click", (e) => {
+  const clickedBox = e.target.closest(".filter-box");
+
+  if (!clickedBox) return;
+  if (e.target.closest(".dropdown")) return;
+  if (e.target.closest(".clear-btn")) return;
 
   clickedBox.classList.toggle("open");
 });
