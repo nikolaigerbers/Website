@@ -594,7 +594,8 @@ a:active {
 .neuheiten-slider .image-grid {
   flex: 1;
   margin: 0;
-  padding: 10px 0;
+  padding: 10px 0;   /* Desktop-Wert bleibt */
+  gap: 30px;         /* Desktop: großzügig */
 }
 
 .neuheiten-slider .slider-btn.neuheiten-prev {
