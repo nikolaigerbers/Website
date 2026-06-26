@@ -292,6 +292,12 @@ a:active {
   height: auto;
 }
 
+.hero-image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
 /* Seitenlayout */
 .impressum-main,
 .hersteller_designer-main,
