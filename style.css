@@ -1200,4 +1200,9 @@ a:active {
     padding: 10px 4px; /* war: padding: 10px 0 – noch etwas enger zum Rand */
     gap: 4px;         /* war: 30px – Grid-Lücke zwischen den Karten */
   }
+
+  .hero-image {
+    width: 100%;
+    height: auto;
+  }
 }
