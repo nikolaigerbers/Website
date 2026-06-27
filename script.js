@@ -532,20 +532,45 @@ function initNeuheiten() {
   const prevBtn = document.querySelector(".neuheiten-prev");
   const nextBtn = document.querySelector(".neuheiten-next");
   const sliderEl = document.querySelector(".neuheiten-slider");
+  const dotsContainer = document.querySelector(".neuheiten-dots");
 
   const sorted = [...products].sort(
     (a, b) => new Date(b.uploadDate) - new Date(a.uploadDate)
   );
   const total = sorted.length;
 
+  function updateDots() {
+    if (!dotsContainer) return;
+    dotsContainer.querySelectorAll(".dot").forEach((dot, i) => {
+      dot.classList.toggle("active", i === neuheitenIndex % total);
+    });
+  }
+
+  // Dots aufbauen
+  if (dotsContainer) {
+    sorted.forEach((_, i) => {
+      const dot = document.createElement("span");
+      dot.classList.add("dot");
+      if (i === 0) dot.classList.add("active");
+      dot.addEventListener("click", () => {
+        neuheitenIndex = i;
+        renderNewest();
+        updateDots();
+      });
+      dotsContainer.appendChild(dot);
+    });
+  }
+
   nextBtn?.addEventListener("click", () => {
     neuheitenIndex = (neuheitenIndex + 1) % total;
     renderNewest();
+    updateDots();
   });
 
   prevBtn?.addEventListener("click", () => {
     neuheitenIndex = (neuheitenIndex - 1 + total) % total;
     renderNewest();
+    updateDots();
   });
 
   // Touch-Swipe
@@ -564,6 +589,7 @@ function initNeuheiten() {
       neuheitenIndex = (neuheitenIndex - 1 + total) % total;
     }
     renderNewest();
+    updateDots();
   }, { passive: true });
 
   renderNewest();
