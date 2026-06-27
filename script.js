@@ -470,6 +470,18 @@ function applyURLFilter() {
   applyFilters();
 }
 
+// =====================
+// Dropdown bei Maus-Verlassen schließen (nur Desktop)
+// =====================
+
+document.querySelectorAll(".filter-bar:not(.filter-modal .filter-bar) .filter-box").forEach(box => {
+  box.addEventListener("mouseleave", () => {
+    if (window.matchMedia("(min-width: 769px)").matches) {
+      box.classList.remove("open");
+    }
+  });
+});
+
 
 // =====================
 // Filter-Modal (Mobil)
