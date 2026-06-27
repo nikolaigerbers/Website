@@ -305,12 +305,19 @@ a:active {
 .produkte-main,
 .kontakt-main,
 .neuheiten-main,
-.archiv-main,
+.archiv-main{
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto 0 auto; /* oben 0, unten 20px bleibt */
+  flex: 1;
+  box-sizing: border-box;
+}
+
 .main-main {
   width: 100%;
   max-width: 1200px;
-  margin: 20px auto;
-  padding: 0 20px;           /* ← neu */
+  margin: 0 auto 20px auto;
+  padding: 0 20px;
   flex: 1;
   box-sizing: border-box;
 }
