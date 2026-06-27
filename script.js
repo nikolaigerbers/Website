@@ -636,7 +636,6 @@ document.querySelectorAll(".slider").forEach(slider => {
 
   function openFullscreen(startIndex) {
     fullscreenSlides.innerHTML = "";
-
     images.forEach(img => {
       const clone = document.createElement("img");
       clone.src = img.src;
@@ -644,7 +643,6 @@ document.querySelectorAll(".slider").forEach(slider => {
       clone.style.display = "none";
       fullscreenSlides.appendChild(clone);
     });
-
     currentIndex = startIndex;
     showFullscreenSlide(currentIndex);
     overlay.classList.add("open");
@@ -658,7 +656,6 @@ document.querySelectorAll(".slider").forEach(slider => {
     });
   }
 
-  // Sync mit aktivem Slider-Bild
   function getCurrentSliderIndex() {
     let idx = 0;
     images.forEach((img, i) => {
@@ -669,6 +666,13 @@ document.querySelectorAll(".slider").forEach(slider => {
 
   fullscreenBtn.addEventListener("click", () => {
     openFullscreen(getCurrentSliderIndex());
+  });
+
+  // NEU: Klick auf Bild öffnet Fullscreen
+  images.forEach(img => {
+    img.addEventListener("click", () => {
+      openFullscreen(getCurrentSliderIndex());
+    });
   });
 
   closeBtn?.addEventListener("click", () => {
@@ -694,4 +698,23 @@ document.querySelectorAll(".slider").forEach(slider => {
     currentIndex = (currentIndex - 1 + imgs.length) % imgs.length;
     showFullscreenSlide(currentIndex);
   });
+
+  // Touch-Swipe
+  let touchStartX = 0;
+
+  overlay.addEventListener("touchstart", (e) => {
+    touchStartX = e.touches[0].clientX;
+  }, { passive: true });
+
+  overlay.addEventListener("touchend", (e) => {
+    const diff = touchStartX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) < 40) return; // zu kurz → kein Swipe
+    const imgs = fullscreenSlides.querySelectorAll("img");
+    if (diff > 0) {
+      currentIndex = (currentIndex + 1) % imgs.length;
+    } else {
+      currentIndex = (currentIndex - 1 + imgs.length) % imgs.length;
+    }
+    showFullscreenSlide(currentIndex);
+  }, { passive: true });
 });
