@@ -1062,6 +1062,34 @@ a:active {
   display: block;
 }
 
+.slider-dots {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.slider-dots .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 1.5px solid #000;
+  background: transparent;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.slider-dots .dot:hover {
+  border-color: #888;
+  background: #888;
+}
+
+.slider-dots .dot.active {
+  background: #000;
+}
 
 /* ===== MOBILE ANPASSUNGEN ===== */
 @media (max-width: 768px) {

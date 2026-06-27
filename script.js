@@ -7,13 +7,36 @@ productSliders.forEach(slider => {
   const images = slider.querySelectorAll(".slides img");
   const prevBtn = slider.querySelector(".prev");
   const nextBtn = slider.querySelector(".next");
+  const dotsContainer = slider.closest(".left")?.querySelector(".slider-dots");
 
   let index = 0;
+
+  // Dots aufbauen
+  if (dotsContainer) {
+    images.forEach((_, i) => {
+      const dot = document.createElement("span");
+      dot.classList.add("dot");
+      if (i === 0) dot.classList.add("active");
+      dot.addEventListener("click", () => {
+        index = i;
+        showSlide(index);
+      });
+      dotsContainer.appendChild(dot);
+    });
+  }
+
+  function updateDots() {
+    if (!dotsContainer) return;
+    dotsContainer.querySelectorAll(".dot").forEach((dot, i) => {
+      dot.classList.toggle("active", i === index);
+    });
+  }
 
   function showSlide(i) {
     images.forEach((img, idx) => {
       img.style.display = idx === i ? "block" : "none";
     });
+    updateDots();
   }
 
   showSlide(index);
