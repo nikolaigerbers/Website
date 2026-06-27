@@ -508,6 +508,7 @@ function renderNewest() {
 function initNeuheiten() {
   const prevBtn = document.querySelector(".neuheiten-prev");
   const nextBtn = document.querySelector(".neuheiten-next");
+  const sliderEl = document.querySelector(".neuheiten-slider");
 
   const sorted = [...products].sort(
     (a, b) => new Date(b.uploadDate) - new Date(a.uploadDate)
@@ -523,6 +524,24 @@ function initNeuheiten() {
     neuheitenIndex = (neuheitenIndex - 1 + total) % total;
     renderNewest();
   });
+
+  // Touch-Swipe
+  let touchStartX = 0;
+
+  sliderEl?.addEventListener("touchstart", (e) => {
+    touchStartX = e.touches[0].clientX;
+  }, { passive: true });
+
+  sliderEl?.addEventListener("touchend", (e) => {
+    const diff = touchStartX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) < 40) return;
+    if (diff > 0) {
+      neuheitenIndex = (neuheitenIndex + 1) % total;
+    } else {
+      neuheitenIndex = (neuheitenIndex - 1 + total) % total;
+    }
+    renderNewest();
+  }, { passive: true });
 
   renderNewest();
 }
