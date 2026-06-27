@@ -633,7 +633,7 @@ a:active {
 /* Fullscreen Button */
 .fullscreen-btn {
   position: absolute;
-  bottom: 60px;
+  bottom: 0;
   right: 36px;
   background: none;
   border: none;
