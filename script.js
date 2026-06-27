@@ -27,6 +27,24 @@ productSliders.forEach(slider => {
     index = (index - 1 + images.length) % images.length;
     showSlide(index);
   });
+
+  // Touch-Swipe
+  let touchStartX = 0;
+
+  slider.addEventListener("touchstart", (e) => {
+    touchStartX = e.touches[0].clientX;
+  }, { passive: true });
+
+  slider.addEventListener("touchend", (e) => {
+    const diff = touchStartX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) < 40) return;
+    if (diff > 0) {
+      index = (index + 1) % images.length;
+    } else {
+      index = (index - 1 + images.length) % images.length;
+    }
+    showSlide(index);
+  }, { passive: true });
 });
 
 // =====================
