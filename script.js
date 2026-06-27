@@ -724,6 +724,7 @@ document.querySelectorAll(".slider").forEach(slider => {
   const fullscreenBtn = slider.closest(".left")?.querySelector(".fullscreen-btn");
   const overlay = document.getElementById("fullscreenOverlay");
   const fullscreenSlides = overlay?.querySelector(".fullscreen-slides");
+  const fullscreenDotsContainer = overlay?.querySelector(".fullscreen-dots"); // ← neu
   const closeBtn = document.getElementById("fullscreenClose");
   const prevBtn = overlay?.querySelector(".fullscreen-prev");
   const nextBtn = overlay?.querySelector(".fullscreen-next");
@@ -731,6 +732,28 @@ document.querySelectorAll(".slider").forEach(slider => {
   if (!fullscreenBtn || !overlay || !fullscreenSlides) return;
 
   let currentIndex = 0;
+
+  function buildFullscreenDots(count) {  // ← neu
+    if (!fullscreenDotsContainer) return;
+    fullscreenDotsContainer.innerHTML = "";
+    for (let i = 0; i < count; i++) {
+      const dot = document.createElement("span");
+      dot.classList.add("dot");
+      dot.addEventListener("click", () => {
+        currentIndex = i;
+        showFullscreenSlide(currentIndex);
+        updateFullscreenDots();
+      });
+      fullscreenDotsContainer.appendChild(dot);
+    }
+  }
+
+  function updateFullscreenDots() {  // ← neu
+    if (!fullscreenDotsContainer) return;
+    fullscreenDotsContainer.querySelectorAll(".dot").forEach((dot, i) => {
+      dot.classList.toggle("active", i === currentIndex);
+    });
+  }
 
   function openFullscreen(startIndex) {
     fullscreenSlides.innerHTML = "";
@@ -741,6 +764,7 @@ document.querySelectorAll(".slider").forEach(slider => {
       clone.style.display = "none";
       fullscreenSlides.appendChild(clone);
     });
+    buildFullscreenDots(images.length);  // ← neu
     currentIndex = startIndex;
     showFullscreenSlide(currentIndex);
     overlay.classList.add("open");
@@ -752,6 +776,7 @@ document.querySelectorAll(".slider").forEach(slider => {
     imgs.forEach((img, idx) => {
       img.style.display = idx === i ? "block" : "none";
     });
+    updateFullscreenDots();  // ← neu
   }
 
   function getCurrentSliderIndex() {

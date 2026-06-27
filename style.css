@@ -1062,6 +1062,42 @@ a:active {
   display: block;
 }
 
+.fullscreen-dots {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.fullscreen-dots .dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 1.5px solid #000;
+  background: transparent;
+  cursor: pointer;
+  transition: background 0.2s;
+  flex-shrink: 0;
+}
+
+.fullscreen-dots .dot:hover {
+  border-color: #888;
+  background: #888;
+}
+
+.fullscreen-dots .dot.active {
+  background: #000;
+}
+
+.fullscreen-dots .dot.active:hover {
+  border-color: #000;
+  background: #000;
+}
+
 .neuheiten-dots {
   display: flex;
   justify-content: center;
