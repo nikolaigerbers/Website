@@ -519,76 +519,180 @@ function updateFilterToggleLabel() {
 // Neueste (Startseite)
 // =====================
 
-function preloadImages(srcs) {
-  return Promise.all(
-    srcs.map(src => new Promise(resolve => {
-      const img = new Image();
-      img.onload = img.onerror = resolve;
-      img.src = src;
-    }))
-  );
-}
-
 let neuheitenIndex = 0;
 let neuheitenAnimating = false;
-
-function renderNewest(animate = false) {
-  if (!document.querySelector(".main-main")) return;
-
-  const grid = document.querySelector(".image-grid");
-  if (!grid) return;
-
-  const isMobile = window.matchMedia("(max-width: 768px)").matches;
-  const count = isMobile ? 2 : 3;
-
-  const sorted = [...products].sort(
-    (a, b) => new Date(b.uploadDate) - new Date(a.uploadDate)
-  );
-  const total = sorted.length;
-  const visible = [];
-  for (let i = 0; i < count; i++) {
-    visible.push(sorted[(neuheitenIndex + i) % total]);
-  }
-
-  const srcs = visible.map(p => p.image);
-
-  const doSwap = () => {
-    renderProducts(visible);
-    grid.classList.remove("fading");
-    neuheitenAnimating = false;
-  };
-
-  if (!animate) {
-    renderProducts(visible);
-    return;
-  }
-
-  if (neuheitenAnimating) return;
-  neuheitenAnimating = true;
-
-  grid.classList.add("fading");
-
-  preloadImages(srcs).then(() => {
-    setTimeout(doSwap, 250); // passt zur transition-duration
-  });
-}
 
 function initNeuheiten() {
   const prevBtn = document.querySelector(".neuheiten-prev");
   const nextBtn = document.querySelector(".neuheiten-next");
   const sliderEl = document.querySelector(".neuheiten-slider");
+  const track = document.querySelector(".neuheiten-track");
+  const wrapper = document.querySelector(".neuheiten-track-wrapper");
   const dotsContainer = document.querySelector(".neuheiten-dots");
+
+  if (!track || !wrapper) return;
 
   const sorted = [...products].sort(
     (a, b) => new Date(b.uploadDate) - new Date(a.uploadDate)
   );
   const total = sorted.length;
 
+  function getCount() {
+    return window.matchMedia("(max-width: 768px)").matches ? 2 : 3;
+  }
+
+  function getGap() {
+    return window.matchMedia("(max-width: 768px)").matches ? 4 : 30;
+  }
+
+  function getCardWidth() {
+    const gap = getGap();
+    const count = getCount();
+    return (wrapper.offsetWidth - gap * (count - 1)) / count;
+  }
+
+  function makeCard(p) {
+    const item = document.createElement("div");
+    item.classList.add("grid-item");
+    item.innerHTML = `
+      <a href="${p.link}">
+        <img src="${p.image}" alt="${p.name}" loading="eager" />
+        <div class="caption">
+          <p>${p.manufacturer}</p>
+          <p>${p.name}</p>
+          <p>${p.price.toFixed(2)} €</p>
+        </div>
+      </a>
+    `;
+    return item;
+  }
+
+  function buildTrack() {
+    track.innerHTML = "";
+    // Klone am Ende (für Vorwärts-Loop)
+    sorted.forEach(p => track.appendChild(makeCard(p)));
+    // Originale
+    sorted.forEach(p => track.appendChild(makeCard(p)));
+    // Klone am Anfang (für Rückwärts-Loop)
+    sorted.forEach(p => track.appendChild(makeCard(p)));
+  }
+
+  function setCardWidths() {
+    const cardWidth = getCardWidth();
+    track.querySelectorAll(".grid-item").forEach(item => {
+      item.style.width = cardWidth + "px";
+    });
+  }
+
+  // neuheitenIndex zeigt immer auf die mittlere (echte) Gruppe
+  // Offset: total Karten vor dem echten Block
+  function positionTrack(animated) {
+    const cardWidth = getCardWidth();
+    const gap = getGap();
+    const absoluteIndex = total + neuheitenIndex; // mittlere Gruppe
+    const offset = absoluteIndex * (cardWidth + gap);
+
+    track.style.transition = animated
+      ? "transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)"
+      : "none";
+    track.style.transform = `translateX(-${offset}px)`;
+  }
+
   function updateDots() {
     if (!dotsContainer) return;
     dotsContainer.querySelectorAll(".dot").forEach((dot, i) => {
-      dot.classList.toggle("active", i === neuheitenIndex % total);
+      dot.classList.toggle("active", i === neuheitenIndex);
     });
+  }
+
+  function goTo(newIndex, animated = true) {
+    if (neuheitenAnimating && animated) return;
+    neuheitenAnimating = true;
+
+    neuheitenIndex = ((newIndex % total) + total) % total;
+    positionTrack(animated);
+    updateDots();
+
+    if (animated) {
+      // Nach der Animation: prüfen ob wir in einen Klon-Bereich gerutscht sind
+      // (kann hier nicht passieren da wir immer in 0..total-1 normalisieren)
+      setTimeout(() => { neuheitenAnimating = false; }, 420);
+    } else {
+      neuheitenAnimating = false;
+    }
+  }
+
+  function goToRaw(absoluteIndex, animated = true) {
+    // Für den Loop-Sprung: direkt einen absoluten Track-Index anfahren
+    if (neuheitenAnimating && animated) return;
+    neuheitenAnimating = true;
+
+    const cardWidth = getCardWidth();
+    const gap = getGap();
+    const offset = absoluteIndex * (cardWidth + gap);
+
+    track.style.transition = animated
+      ? "transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)"
+      : "none";
+    track.style.transform = `translateX(-${offset}px)`;
+
+    if (animated) {
+      setTimeout(() => { neuheitenAnimating = false; }, 420);
+    } else {
+      neuheitenAnimating = false;
+    }
+  }
+
+  function handleNext() {
+    if (neuheitenAnimating) return;
+
+    // Sind wir am Ende der echten Gruppe? → animiert in Klon-Gruppe gleiten, dann lautlos zurück
+    if (neuheitenIndex === total - 1) {
+      neuheitenAnimating = true;
+      // Animiert zur ersten Karte der hinteren Klon-Gruppe (Index: 2*total)
+      const cardWidth = getCardWidth();
+      const gap = getGap();
+      track.style.transition = "transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)";
+      track.style.transform = `translateX(-${2 * total * (cardWidth + gap)}px)`;
+      updateDots(); // Dot 0 wird aktiv
+      setTimeout(() => {
+        neuheitenIndex = 0;
+        positionTrack(false); // lautlos zurück zur echten Gruppe
+        neuheitenAnimating = false;
+        updateDots();
+      }, 420);
+    } else {
+      neuheitenIndex++;
+      positionTrack(true);
+      updateDots();
+      setTimeout(() => { neuheitenAnimating = false; }, 420);
+      neuheitenAnimating = true;
+    }
+  }
+
+  function handlePrev() {
+    if (neuheitenAnimating) return;
+
+    if (neuheitenIndex === 0) {
+      neuheitenAnimating = true;
+      // Animiert zur letzten Karte der vorderen Klon-Gruppe (Index: total-1)
+      const cardWidth = getCardWidth();
+      const gap = getGap();
+      track.style.transition = "transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)";
+      track.style.transform = `translateX(-${(total - 1) * (cardWidth + gap)}px)`;
+      setTimeout(() => {
+        neuheitenIndex = total - 1;
+        positionTrack(false); // lautlos zur echten Gruppe
+        neuheitenAnimating = false;
+        updateDots();
+      }, 420);
+    } else {
+      neuheitenAnimating = true;
+      neuheitenIndex--;
+      positionTrack(true);
+      updateDots();
+      setTimeout(() => { neuheitenAnimating = false; }, 420);
+    }
   }
 
   // Dots aufbauen
@@ -597,26 +701,13 @@ function initNeuheiten() {
       const dot = document.createElement("span");
       dot.classList.add("dot");
       if (i === 0) dot.classList.add("active");
-      dot.addEventListener("click", () => {
-        neuheitenIndex = i;
-        renderNewest(true);
-        updateDots();
-      });
+      dot.addEventListener("click", () => goTo(i));
       dotsContainer.appendChild(dot);
     });
   }
 
-  nextBtn?.addEventListener("click", () => {
-    neuheitenIndex = (neuheitenIndex + 1) % total;
-    renderNewest(true);
-    updateDots();
-  });
-
-  prevBtn?.addEventListener("click", () => {
-    neuheitenIndex = (neuheitenIndex - 1 + total) % total;
-    renderNewest(true);
-    updateDots();
-  });
+  nextBtn?.addEventListener("click", handleNext);
+  prevBtn?.addEventListener("click", handlePrev);
 
   // Touch-Swipe
   let touchStartX = 0;
@@ -629,15 +720,23 @@ function initNeuheiten() {
     const diff = touchStartX - e.changedTouches[0].clientX;
     if (Math.abs(diff) < 40) return;
     if (diff > 0) {
-      neuheitenIndex = (neuheitenIndex + 1) % total;
+      handleNext();
     } else {
-      neuheitenIndex = (neuheitenIndex - 1 + total) % total;
+      handlePrev();
     }
-    renderNewest(true);
-    updateDots();
   }, { passive: true });
 
-  renderNewest();
+  // Resize
+  window.addEventListener("resize", () => {
+    setCardWidths();
+    positionTrack(false);
+  });
+
+  // Init
+  buildTrack();
+  setCardWidths();
+  positionTrack(false);
+  updateDots();
 }
 
 
@@ -677,9 +776,6 @@ mediaQuery.addEventListener("change", (e) => {
   if (e.matches && modal) {
     modal.style.display = "none";
     closeAllDropdowns();
-  }
-  if (!document.querySelector(".filter-bar") && !document.querySelector(".hd-grid")) {
-    renderNewest();
   }
 });
 

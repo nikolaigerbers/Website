@@ -600,17 +600,29 @@ a:active {
 
 /* Buttons */
 
+/* ===== NEUHEITEN SLIDER ===== */
 .neuheiten-slider {
   display: flex;
   align-items: center;
   gap: 0;
+  overflow: hidden;
 }
 
-.neuheiten-slider .image-grid {
+.neuheiten-track-wrapper {
   flex: 1;
-  margin: 0;
-  padding: 10px 0;   /* Desktop-Wert bleibt */
-  gap: 30px;         /* Desktop: großzügig */
+  overflow: hidden;
+  min-width: 0;
+}
+
+.neuheiten-track {
+  display: flex;
+  gap: 30px;
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: transform;
+}
+
+.neuheiten-track .grid-item {
+  flex-shrink: 0;
 }
 
 .neuheiten-slider .slider-btn.neuheiten-prev {
@@ -621,6 +633,15 @@ a:active {
 .neuheiten-slider .slider-btn.neuheiten-next {
   transform: rotate(90deg);
   flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .neuheiten-track {
+    gap: 4px;
+  }
+  .neuheiten-slider .slider-btn {
+    padding: 10px 0;
+  }
 }
 
 .photo-slider button {
@@ -1173,15 +1194,6 @@ a:active {
 .slider-dots .dot.active {
   background: #000;
 }
-
-/* ===== NEUHEITEN SLIDER TRANSITION ===== */
-.image-grid {
-  transition: opacity 0.25s ease;
-}
-.image-grid.fading {
-  opacity: 0;
-}
-
 
 
 /* ===== MOBILE ANPASSUNGEN ===== */

@@ -7,68 +7,63 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
 <header class="site-header">
-  <div class="header-top">
-    <a href="index.html"><img src="data/Logo/NikolaiGerbersDesignarchiv_Logo.png" class="logo-header"></a>
-    <button class="burger-btn" id="burgerBtn" aria-label="Menü öffnen">
-      <img src="data/Icons/BurgerMenuIcon.PNG" alt="Menü" />
-    </button>
-  </div>
-  <nav class="header-nav">
-    <ul>
-      <li><a href="produkte.html">Produkte</a></li>
-      <li><a href="hersteller_designer.html">Hersteller & Designer</a></li>
-      <li><a href="informationen.html">Informationen</a></li>
-    </ul>
-  </nav>
+<div class="header-top">
+<a href="index.html"><img src="data/Logo/NikolaiGerbersDesignarchiv_Logo.png" class="logo-header"></a>
+<button class="burger-btn" id="burgerBtn" aria-label="Menü öffnen">
+<img src="data/Icons/BurgerMenuIcon.PNG" alt="Menü" />
+</button>
+</div>
+<nav class="header-nav">
+<ul>
+<li><a href="produkte.html">Produkte</a></li>
+<li><a href="hersteller_designer.html">Hersteller & Designer</a></li>
+<li><a href="informationen.html">Informationen</a></li>
+</ul>
+</nav>
 </header>
-
 <!-- Overlay -->
 <div class="nav-overlay" id="navOverlay">
-  <div class="nav-drawer" id="navDrawer">
-    <button class="drawer-close" id="drawerClose" aria-label="Menü schließen">✕</button>
-    <nav>
-      <ul>
-        <li><a href="produkte.html">Produkte</a></li>
-        <li><a href="hersteller_designer.html">Hersteller & Designer</a></li>
-        <li><a href="informationen.html">Informationen</a></li>
-      </ul>
-    </nav>
-  </div>
+<div class="nav-drawer" id="navDrawer">
+<button class="drawer-close" id="drawerClose" aria-label="Menü schließen">✕</button>
+<nav>
+<ul>
+<li><a href="produkte.html">Produkte</a></li>
+<li><a href="hersteller_designer.html">Hersteller & Designer</a></li>
+<li><a href="informationen.html">Informationen</a></li>
+</ul>
+</nav>
+</div>
 </div>
 <a href="produkte.html">
-  <picture>
-    <source srcset="data/Startseite/StartseiteMobil.JPG" media="(max-width: 768px)" type="image/jpeg">
-    <source srcset="data/Startseite/StartseiteDesktop.JPG" type="image/jpeg">
-    <img src="data/Startseite/StartseiteDesktop.JPG" class="hero-image" alt="Komposition mit Stühlen" width="1200" height="600">
-  </picture>
+<picture>
+<source srcset="data/Startseite/StartseiteMobil.JPG" media="(max-width: 768px)" type="image/jpeg">
+<source srcset="data/Startseite/StartseiteDesktop.JPG" type="image/jpeg">
+<img src="data/Startseite/StartseiteDesktop.JPG" class="hero-image" alt="Komposition mit Stühlen" width="1200" height="600">
+</picture>
 </a>
-
 <main class="main-main">
-  
-  <h1>Neuheiten</h1>
-  <div class="neuheiten-slider">
-    <button class="slider-btn neuheiten-prev">&#8963;</button>
-    <section class="image-grid"></section>
-    <button class="slider-btn neuheiten-next">&#8963;</button>
+<h1>Neuheiten</h1>
+<div class="neuheiten-slider">
+  <button class="slider-btn neuheiten-prev">&#8963;</button>
+  <div class="neuheiten-track-wrapper">
+    <div class="neuheiten-track"></div>
   </div>
-  <div class="neuheiten-dots"></div>
-  </br></br>
-  <div class="centered">
-    <a href="produkte.html" class="anfrage-btn">Alle Produkte</a>
-  </div>
+  <button class="slider-btn neuheiten-next">&#8963;</button>
+</div>
+<div class="neuheiten-dots"></div>
+</br></br>
+<div class="centered">
+<a href="produkte.html" class="anfrage-btn">Alle Produkte</a>
+</div>
 </main>
-
 <footer class="site-footer">
-  <ul class="footer-nav">
-    <li><a href="kontakt.html">Kontakt</a></li>
-    <li><a href="impressum.html">Impressum</a></li>
-  </ul>
-
-  <span class="footer-branding">Designarchiv - Nikolai Gerbers</span>
+<ul class="footer-nav">
+<li><a href="kontakt.html">Kontakt</a></li>
+<li><a href="impressum.html">Impressum</a></li>
+</ul>
+<span class="footer-branding">Designarchiv - Nikolai Gerbers</span>
 </footer>
-
 <script src="script.js"></script>
 </body>
 </html>
