@@ -1198,6 +1198,51 @@ a:active {
   background: #000;
 }
 
+/* nachher */
+.hero-tagline {
+  width: 100%;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 0;
+  gap: 4px;
+}
+
+.hero-tagline span {
+  display: inline;
+  text-align: center;
+  font-family: Impact, "Arial Narrow", sans-serif;
+}
+
+.tagline-line1 {
+  display: block;
+  text-align: center;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+}
+
+.tagline-black {
+  color: #000 !important;
+  -webkit-text-fill-color: #000 !important;
+}
+
+.tagline-highlight {
+  background-color: #255E08;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  padding: 0 8px;
+}
+
+.tagline-sub {
+  display: block;
+  color: #000 !important;
+  -webkit-text-fill-color: #000 !important;
+  font-size: clamp(0.9rem, 2vw, 1.4rem);
+  font-family: Impact, "Arial Narrow", sans-serif;
+  text-align: center;
+}
+
 
 /* ===== MOBILE ANPASSUNGEN ===== */
 @media (max-width: 768px) {
