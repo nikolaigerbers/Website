@@ -519,10 +519,24 @@ function updateFilterToggleLabel() {
 // Neueste (Startseite)
 // =====================
 
-let neuheitenIndex = 0;
+function preloadImages(srcs) {
+  return Promise.all(
+    srcs.map(src => new Promise(resolve => {
+      const img = new Image();
+      img.onload = img.onerror = resolve;
+      img.src = src;
+    }))
+  );
+}
 
-function renderNewest() {
+let neuheitenIndex = 0;
+let neuheitenAnimating = false;
+
+function renderNewest(animate = false) {
   if (!document.querySelector(".main-main")) return;
+
+  const grid = document.querySelector(".image-grid");
+  if (!grid) return;
 
   const isMobile = window.matchMedia("(max-width: 768px)").matches;
   const count = isMobile ? 2 : 3;
@@ -530,14 +544,33 @@ function renderNewest() {
   const sorted = [...products].sort(
     (a, b) => new Date(b.uploadDate) - new Date(a.uploadDate)
   );
-
   const total = sorted.length;
   const visible = [];
   for (let i = 0; i < count; i++) {
     visible.push(sorted[(neuheitenIndex + i) % total]);
   }
 
-  renderProducts(visible);
+  const srcs = visible.map(p => p.image);
+
+  const doSwap = () => {
+    renderProducts(visible);
+    grid.classList.remove("fading");
+    neuheitenAnimating = false;
+  };
+
+  if (!animate) {
+    renderProducts(visible);
+    return;
+  }
+
+  if (neuheitenAnimating) return;
+  neuheitenAnimating = true;
+
+  grid.classList.add("fading");
+
+  preloadImages(srcs).then(() => {
+    setTimeout(doSwap, 250); // passt zur transition-duration
+  });
 }
 
 function initNeuheiten() {
@@ -566,7 +599,7 @@ function initNeuheiten() {
       if (i === 0) dot.classList.add("active");
       dot.addEventListener("click", () => {
         neuheitenIndex = i;
-        renderNewest();
+        renderNewest(true);
         updateDots();
       });
       dotsContainer.appendChild(dot);
@@ -575,13 +608,13 @@ function initNeuheiten() {
 
   nextBtn?.addEventListener("click", () => {
     neuheitenIndex = (neuheitenIndex + 1) % total;
-    renderNewest();
+    renderNewest(true);
     updateDots();
   });
 
   prevBtn?.addEventListener("click", () => {
     neuheitenIndex = (neuheitenIndex - 1 + total) % total;
-    renderNewest();
+    renderNewest(true);
     updateDots();
   });
 
@@ -600,7 +633,7 @@ function initNeuheiten() {
     } else {
       neuheitenIndex = (neuheitenIndex - 1 + total) % total;
     }
-    renderNewest();
+    renderNewest(true);
     updateDots();
   }, { passive: true });
 

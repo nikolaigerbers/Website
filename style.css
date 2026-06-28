@@ -1174,6 +1174,14 @@ a:active {
   background: #000;
 }
 
+/* ===== NEUHEITEN SLIDER TRANSITION ===== */
+.image-grid {
+  transition: opacity 0.25s ease;
+}
+.image-grid.fading {
+  opacity: 0;
+}
+
 
 
 /* ===== MOBILE ANPASSUNGEN ===== */
