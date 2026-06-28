@@ -1478,3 +1478,26 @@ a:active {
   flex-shrink: 0;
 }
 }
+
+@media (max-width: 768px) {
+
+  /* Screen 1: normale Höhe + Scroll erlauben */
+  .screen-1 {
+    height: auto !important;
+    overflow: visible !important;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Screen 2: ebenfalls frei scrollbar */
+  .screen-2 {
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+  /* wichtig: Body darf scrollen */
+  body {
+    overflow-y: auto !important;
+  }
+
+}
