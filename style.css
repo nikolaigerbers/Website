@@ -1238,7 +1238,7 @@ a:active {
   display: block;
   color: #000 !important;
   -webkit-text-fill-color: #000 !important;
-  font-size: clamp(0.9rem, 2vw, 1.4rem);
+  font-size: clamp(1.6rem, 4vw, 3rem);
   font-family: Impact, "Arial Narrow", sans-serif;
   text-align: center;
 }
@@ -1382,4 +1382,99 @@ a:active {
     padding: 10px 4px; /* war: padding: 10px 0 – noch etwas enger zum Rand */
     gap: 4px;         /* war: 30px – Grid-Lücke zwischen den Karten */
   }
+}
+
+
+/* ===== DESKTOP: 2-Screen-Layout ===== */
+@media (min-width: 769px) {
+
+  /* Screen 1: Header + Hero-Image + Tagline */
+  .site-header {
+    flex-shrink: 0;
+  }
+
+ .hero-image-wrap {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fff; /* wichtig für Freiflächen */
+}
+
+.hero-image {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+  .hero-tagline {
+    flex-shrink: 0;
+  }
+
+  /* Screen 2: Neuheiten + Footer */
+  .screen-2 {
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  .main-main {
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+  }
+
+  .site-footer {
+    flex-shrink: 0;
+    margin-top: 0;
+  }
+
+  /* Neuheiten-Slider füllt verfügbaren Platz */
+  .neuheiten-track-wrapper {
+    flex: 1;
+    min-height: 0;
+  }
+
+  .neuheiten-slider {
+    flex: 1;
+    min-height: 0;
+    align-items: stretch;   /* ← neu */
+  }
+
+  .neuheiten-track {
+    gap: 10px;              /* ← kleiner Gap (war 30px) */
+    align-items: stretch;   /* ← neu */
+  }
+
+  .neuheiten-track .grid-item {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .neuheiten-track .grid-item {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* FIXE Bildfläche */
+.neuheiten-track .grid-item img {
+  width: 100%;
+  height: 260px;        /* ← zentraler Gleichmacher */
+  object-fit: contain;  /* oder "cover" für strengeres Layout */
+  display: block;
+}
+
+/* Caption bleibt stabil darunter */
+.neuheiten-track .grid-item .caption {
+  flex-shrink: 0;
+}
 }
