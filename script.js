@@ -33,11 +33,11 @@ productSliders.forEach(slider => {
   }
 
   function showSlide(i) {
-  images.forEach((img, idx) => {
-    img.classList.toggle("active", idx === i);
-  });
-  updateDots();
-}
+    images.forEach((img, idx) => {
+      img.style.display = idx === i ? "block" : "none";
+    });
+    updateDots();
+  }
 
   showSlide(index);
 
@@ -538,31 +538,18 @@ function initNeuheiten() {
   const total = sorted.length;
 
   function getCount() {
-  const width = window.innerWidth;
-
-  if (width < 900) return 2;
-  if (width < 1200) return 3;
-  if (width < 1600) return 4;
-
-  return 4; // bewusst gedeckelt
-}
+    return window.matchMedia("(max-width: 768px)").matches ? 2 : 3;
+  }
 
   function getGap() {
     return window.matchMedia("(max-width: 768px)").matches ? 4 : 30;
   }
 
-function getCardWidth() {
-  const gap = getGap();
-  const count = getCount();
-
-  const rawWidth = (wrapper.offsetWidth - gap * (count - 1)) / count;
-
-  // 🔥 neue Begrenzung
-  const maxWidth = 320;   // Desktop angenehm für Stühle
-  const minWidth = 180;   // verhindert zu kleine Karten
-
-  return Math.max(minWidth, Math.min(maxWidth, rawWidth));
-}
+  function getCardWidth() {
+    const gap = getGap();
+    const count = getCount();
+    return (wrapper.offsetWidth - gap * (count - 1)) / count;
+  }
 
   function makeCard(p) {
     const item = document.createElement("div");
@@ -774,8 +761,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Startseite
   if (document.querySelector(".main-main")) {
-  requestAnimationFrame(() => requestAnimationFrame(() => initNeuheiten()));
-}
+    initNeuheiten();
+  }
 });
 
 
