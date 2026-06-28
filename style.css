@@ -1238,7 +1238,7 @@ a:active {
   display: block;
   color: #000 !important;
   -webkit-text-fill-color: #000 !important;
-  font-size: clamp(1.6rem, 4vw, 3rem);
+  font-size: calc(clamp(2rem, 5vw, 3.5rem) * 0.75);
   font-family: Impact, "Arial Narrow", sans-serif;
   text-align: center;
 }
