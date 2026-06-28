@@ -306,10 +306,11 @@ a:active {
 .produkte-main,
 .kontakt-main,
 .neuheiten-main,
-.archiv-main{
+.archiv-main {
   width: 100%;
   max-width: 1200px;
-  margin: 0 auto 0 auto; /* oben 0, unten 20px bleibt */
+  margin: 20px auto 0 auto;
+  padding: 0 20px;
   flex: 1;
   box-sizing: border-box;
 }
@@ -789,10 +790,12 @@ a:active {
   color: #888;
 }
 
+/* nachher */
 .products-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding-right: 12px;
 }
 
 .filter-toggle {
