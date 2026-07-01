@@ -1223,8 +1223,8 @@ a:active {
 }
 
 .tagline-black {
-  color: #000 !important;
-  -webkit-text-fill-color: #000 !important;
+  color: #255E08 !important;
+  -webkit-text-fill-color: #255E08 !important;
 }
 
 .tagline-highlight {
