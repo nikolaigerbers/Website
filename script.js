@@ -537,9 +537,9 @@ function initNeuheiten() {
   );
   const total = sorted.length;
 
-  function getCount() {
+ function getCount() {
   if (window.matchMedia("(max-width: 768px)").matches) return 2;
-  if (window.matchMedia("(max-width: 1279px)").matches) return 3;
+  if (window.matchMedia("(max-width: 1152px)").matches) return 3;
   return 4;
 }
 
