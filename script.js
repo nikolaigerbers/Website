@@ -538,12 +538,14 @@ function initNeuheiten() {
   const total = sorted.length;
 
   function getCount() {
-    return window.matchMedia("(max-width: 768px)").matches ? 2 : 3;
-  }
+  if (window.matchMedia("(max-width: 768px)").matches) return 2;
+  if (window.matchMedia("(max-width: 1279px)").matches) return 3;
+  return 4;
+}
 
   function getGap() {
-    return window.matchMedia("(max-width: 768px)").matches ? 4 : 30;
-  }
+  return parseFloat(getComputedStyle(track).gap) || 0;
+}
 
   function getCardWidth() {
     const gap = getGap();

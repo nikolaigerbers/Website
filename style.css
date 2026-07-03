@@ -485,13 +485,6 @@ a:active {
   margin-top: 0;
 }
 
-/* Mobile: Slider kleiner */
-@media (max-width: 768px) {
-  .slides img {
-    max-height: 100%;
-  }
-}
-
 /* Filter-Leiste */
 .filter-bar {
   width: 95%;
@@ -603,16 +596,14 @@ a:active {
 
 /* ===== NEUHEITEN SLIDER ===== */
 .neuheiten-slider {
+  position: relative;
   display: flex;
   align-items: center;
-  gap: 0;
-  overflow: hidden;
 }
 
 .neuheiten-track-wrapper {
-  flex: 1;
+  width: 100%;
   overflow: hidden;
-  min-width: 0;
 }
 
 .neuheiten-track {
@@ -626,23 +617,21 @@ a:active {
   flex-shrink: 0;
 }
 
-.neuheiten-slider .slider-btn.neuheiten-prev {
-  transform: rotate(-90deg);
-  flex-shrink: 0;
+.neuheiten-slider .slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
 }
 
-.neuheiten-slider .slider-btn.neuheiten-next {
-  transform: rotate(90deg);
-  flex-shrink: 0;
+.neuheiten-slider .neuheiten-prev {
+  left: 0;
+  transform: translateY(-50%) rotate(-90deg);
 }
 
-@media (max-width: 768px) {
-  .neuheiten-track {
-    gap: 4px;
-  }
-  .neuheiten-slider .slider-btn {
-    padding: 10px 0;
-  }
+.neuheiten-slider .neuheiten-next {
+  right: 0;
+  transform: translateY(-50%) rotate(90deg);
 }
 
 .photo-slider button {
@@ -1244,6 +1233,135 @@ a:active {
 }
 
 
+
+/* ← Desktop & geringe Höhe */
+@media (min-width: 769px) and (max-height: 600px) {
+
+    body{
+        overflow-y:auto;
+    }
+
+    .screen-1 {
+    height: auto !important;
+    overflow: visible !important;
+    display: flex;
+    flex-direction: column;
+
+    }
+
+    .screen-2{
+        height:auto;
+        overflow:visible;
+    }
+
+    .main-main{
+        overflow:visible;
+    }
+
+    .hero-image-wrap{
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        background:#fff;
+        padding:30px 0;
+    }
+
+    .hero-image{
+        height:auto;
+        object-fit:contain;
+        display:block;
+    }
+}
+
+/* ===== DESKTOP: 2-Screen-Layout ===== */
+/* Nur aktiv wenn Fenster breit UND hoch genug */
+@media (min-width: 769px) and (min-height: 601px) {
+
+  /* Screen 1 als Flex-Container */
+.screen-1{
+    min-height:100dvh;
+    height:auto;
+}
+
+.site-header,
+.hero-tagline{
+    flex:0 0 auto;
+}
+
+.hero-image-wrap{
+    flex:1 1 auto;
+    min-height:0;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    overflow:hidden;
+    background:#fff;
+}
+
+.hero-image{
+    max-width:100%;
+    max-height:100%;
+    width:auto;
+    height:auto;
+    display:block;
+}
+
+  .screen-2 {
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  .main-main {
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+  }
+
+  .site-footer {
+    flex-shrink: 0;
+    margin-top: 0;
+  }
+
+  .neuheiten-track-wrapper {
+    flex: 1;
+    min-height: 0;
+  }
+
+  .neuheiten-slider {
+    flex: 1;
+    min-height: 0;
+    align-items: stretch;
+  }
+
+  .neuheiten-track {
+    gap: 10px;
+    align-items: stretch;
+  }
+
+  .neuheiten-track .grid-item {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .neuheiten-track .grid-item img {
+    flex: 1;
+    min-height: 0;
+    width: 100%;
+    height: 0;
+    object-fit: contain;
+  }
+
+  .neuheiten-track .grid-item .caption {
+    flex-shrink: 0;
+  }
+}
+
 /* ===== MOBILE ANPASSUNGEN ===== */
 @media (max-width: 768px) {
   
@@ -1382,104 +1500,6 @@ a:active {
     padding: 10px 4px; /* war: padding: 10px 0 – noch etwas enger zum Rand */
     gap: 4px;         /* war: 30px – Grid-Lücke zwischen den Karten */
   }
-}
-
-
-/* ===== DESKTOP: 2-Screen-Layout ===== */
-@media (min-width: 769px) {
-
-  /* Screen 1: Header + Hero-Image + Tagline */
-  .site-header {
-    flex-shrink: 0;
-  }
-
- .hero-image-wrap {
-  flex: 1;
-  min-height: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #fff; /* wichtig für Freiflächen */
-}
-
-.hero-image {
-  max-width: 100%;
-  max-height: 100%;
-  width: auto;
-  height: auto;
-  object-fit: contain;
-  display: block;
-}
-
-  .hero-tagline {
-    flex-shrink: 0;
-  }
-
-  /* Screen 2: Neuheiten + Footer */
-  .screen-2 {
-    height: 100dvh;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-  }
-
-  .main-main {
-    flex: 1;
-    min-height: 0;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    margin: 0 auto;
-  }
-
-  .site-footer {
-    flex-shrink: 0;
-    margin-top: 0;
-  }
-
-  /* Neuheiten-Slider füllt verfügbaren Platz */
-  .neuheiten-track-wrapper {
-    flex: 1;
-    min-height: 0;
-  }
-
-  .neuheiten-slider {
-    flex: 1;
-    min-height: 0;
-    align-items: stretch;   /* ← neu */
-  }
-
-  .neuheiten-track {
-    gap: 10px;              /* ← kleiner Gap (war 30px) */
-    align-items: stretch;   /* ← neu */
-  }
-
-  .neuheiten-track .grid-item {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .neuheiten-track .grid-item {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
-
-/* FIXE Bildfläche */
-.neuheiten-track .grid-item img {
-  width: 100%;
-  height: 260px;        /* ← zentraler Gleichmacher */
-  object-fit: contain;  /* oder "cover" für strengeres Layout */
-  display: block;
-}
-
-/* Caption bleibt stabil darunter */
-.neuheiten-track .grid-item .caption {
-  flex-shrink: 0;
-}
-}
-
-@media (max-width: 768px) {
 
   /* Screen 1: normale Höhe + Scroll erlauben */
   .screen-1 {
@@ -1500,4 +1520,25 @@ a:active {
     overflow-y: auto !important;
   }
 
+}
+
+/* FIXE Bildfläche */
+.neuheiten-slider {
+  align-items: center; /* statt stretch */
+}
+
+.neuheiten-track .grid-item {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  flex-direction: column;
+  justify-content: center; /* zentriert Bild+Caption-Block vertikal */
+}
+
+.neuheiten-track .grid-item img {
+  height: 300px;
+  max-height: 100%;
+  width: 100%;
+  object-fit: contain;
+  display: block;
 }
