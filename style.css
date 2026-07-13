@@ -1498,10 +1498,19 @@ a:active {
 /* ===== NEUHEITEN FINAL FIX ===== */
 
 .neuheiten-slider {
-  position: relative;
+  flex: 1;
+  min-height: 0;
   display: flex;
   flex-direction: column;
-  flex-shrink: 0;
+  justify-content: flex-start;
+}
+
+
+
+.neuheiten-track .grid-item img {
+  width: 100%;
+  height: 300px;
+  object-fit: contain;
 }
 
 .neuheiten-track-wrapper {
@@ -1515,18 +1524,13 @@ a:active {
   gap: 10px;
 }
 
-.neuheiten-track .grid-item {
-  flex: 0 0 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
 .neuheiten-track .grid-item .caption {
   flex-shrink: 0;
 }
 
-
+.neuheiten-track-wrapper {
+  flex: 0 0 auto;
+}
 
 .neuheiten-track .grid-item img {
   width: 100%;
