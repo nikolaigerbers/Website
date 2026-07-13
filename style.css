@@ -1536,8 +1536,7 @@ a:active {
 /* Buttons bleiben über den Karten */
 .neuheiten-slider .slider-btn {
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
+  top: 150px; /* Hälfte der Bildhöhe */
   z-index: 10;
 }
 
