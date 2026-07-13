@@ -448,7 +448,7 @@ html:not(.touch-device) .footer-nav li a:active {
   max-height: 90vh;   /* ← Desktop: großzügig */
   object-fit: contain;
 }
-html:not(.touch-device) .slides img.active {
+.slides img.active {
   display: block;
 }
 
@@ -561,7 +561,7 @@ html:not(.touch-device) .filter-box .clear-btn:hover {
   color: #000;
 }
 
-html:not(.touch-device) .filter-box.active .clear-btn {
+.filter-box.active .clear-btn {
   opacity: 1;
   pointer-events: auto;
 }
@@ -588,7 +588,7 @@ html:not(.touch-device) .filter-box.active .clear-btn {
   object-fit: contain;
 }
 
-html:not(.touch-device) .slide.active {
+.slide.active {
   display: block;
 }
 
@@ -1110,11 +1110,11 @@ html:not(.touch-device) .fullscreen-dots .dot:hover {
   background: #888;
 }
 
-html:not(.touch-device) .fullscreen-dots .dot.active {
+.fullscreen-dots .dot.active {
   background: #000;
 }
 
-html:not(.touch-device) .fullscreen-dots .dot.active:hover {
+.fullscreen-dots .dot.active:hover {
   border-color: #000;
   background: #000;
 }
@@ -1144,11 +1144,11 @@ html:not(.touch-device) .neuheiten-dots .dot:hover {
   background: #888;
 }
 
-html:not(.touch-device) .neuheiten-dots .dot.active {
+.neuheiten-dots .dot.active {
   background: #000;
 }
 
-html:not(.touch-device) .neuheiten-dots .dot.active:hover {
+.neuheiten-dots .dot.active:hover {
   border-color: #000;
   background: #000;
 }
@@ -1178,12 +1178,12 @@ html:not(.touch-device) .neuheiten-dots .dot.active:hover {
   background: #888;
 }
 
-html:not(.touch-device) .slider-dots .dot.active:hover {
+.slider-dots .dot.active:hover {
   border-color: #000;
   background: #000;
 }
 
-html:not(.touch-device) .slider-dots .dot.active {
+.slider-dots .dot.active {
   background: #000;
 }
 
