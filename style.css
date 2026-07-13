@@ -1534,22 +1534,40 @@ a:active {
 }
 
 /* FIXE Bildfläche */
+/* ===== NEUHEITEN FINAL FIX ===== */
+
 .neuheiten-slider {
-  align-items: center; /* statt stretch */
+  position: relative;
+  flex-shrink: 0;
+  align-items: center;
+}
+
+.neuheiten-track-wrapper {
+  width: 100%;
+  overflow: hidden;
+}
+
+.neuheiten-track {
+  display: flex;
+  gap: 30px;
 }
 
 .neuheiten-track .grid-item {
-  display: grid;
-  gap: 10px;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  flex: 0 0 auto;
+  display: flex;
   flex-direction: column;
-  justify-content: center; /* zentriert Bild+Caption-Block vertikal */
+  align-items: center;
 }
 
 .neuheiten-track .grid-item img {
-  height: 300px;
-  max-height: 100%;
   width: 100%;
+  height: 300px;
   object-fit: contain;
   display: block;
+}
+
+.neuheiten-dots {
+  flex-shrink: 0;
+  position: static;
+  margin-top: 20px;
 }
