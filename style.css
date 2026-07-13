@@ -179,7 +179,7 @@ a:active {
 
 /* Grid */
 
-html:not(.touch-device) .grid-item a:hover img {
+.grid-item a:hover img {
   transform: scale(1.08);
 }
 
@@ -221,7 +221,7 @@ html:not(.touch-device) .grid-item a:hover img {
   border-radius: 12px;
   transition: transform 0.3s;
 }
-html:not(.touch-device) .grid-item img:hover {
+.grid-item img:hover {
   transform: scale(1.08);
 }
 .caption {
