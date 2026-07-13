@@ -26,8 +26,8 @@ a:focus {
   -webkit-text-fill-color: #000;
 }
 
-html:not(.touch-device) a:hover,
-html:not(.touch-device) a:active {
+a:hover,
+a:active {
   text-decoration: none !important;
   color: #888 !important;
   -webkit-text-fill-color: #888 !important;
@@ -91,8 +91,8 @@ html:not(.touch-device) a:active {
   font-size: 16px;
 }
 
-html:not(.touch-device) .header-nav a:hover, 
-html:not(.touch-device) .header-nav a:active {
+.header-nav a:hover, 
+.header-nav a:active {
   text-decoration: none !important;
   color: #888 !important;
   -webkit-text-fill-color: #888 !important;
@@ -165,25 +165,25 @@ html:not(.touch-device) .header-nav a:active {
   flex-shrink: 0;
 }
 
-html:not(.touch-device) .hd-list li a:hover,
-html:not(.touch-device) .hd-list li a:active {
+.hd-list li a:hover,
+.hd-list li a:active {
   background: #f5f5f5;
   color: #888 !important;
   -webkit-text-fill-color: #888 !important;
 }
 
-html:not(.touch-device) .hd-list li a:hover::after {
+.hd-list li a:hover::after {
   color: #888;
 }
 
 
 /* Grid */
 
-html:not(.touch-device) .grid-item a:hover img {
+.grid-item a:hover img {
   transform: scale(1.08);
 }
 
-html:not(.touch-device) .grid-item img:hover {
+.grid-item img:hover {
   transform: none;  /* ← alten Hover vom img entfernen */
 }
 
@@ -196,9 +196,9 @@ html:not(.touch-device) .grid-item img:hover {
 }
 
 .grid-item a,
-html:not(.touch-device) .grid-item a:hover,
+.grid-item a:hover,
 .grid-item a:focus,
-html:not(.touch-device) .grid-item a:active {
+.grid-item a:active {
   text-decoration: none !important;
 }
 
@@ -221,7 +221,7 @@ html:not(.touch-device) .grid-item a:active {
   border-radius: 12px;
   transition: transform 0.3s;
 }
-html:not(.touch-device) .grid-item img:hover {
+.grid-item img:hover {
   transform: scale(1.08);
 }
 .caption {
@@ -261,8 +261,8 @@ html:not(.touch-device) .grid-item img:hover {
   color: black;
 }
 
-html:not(.touch-device) .centered a:hover,
-html:not(.touch-device) .centered a:active {
+.centered a:hover,
+.centered a:active {
   text-decoration: none !important;
   color: #888 !important;
   -webkit-text-fill-color: #888 !important;
@@ -329,8 +329,8 @@ html:not(.touch-device) .centered a:active {
   text-decoration: none;
 }
 
-html:not(.touch-device) .kontakt-main a:hover,
-html:not(.touch-device) .kontakt-main a:active {
+.kontakt-main a:hover,
+.kontakt-main a:active {
   text-decoration: none !important;
   color: #888 !important;
   -webkit-text-fill-color: #888 !important;
@@ -362,8 +362,8 @@ html:not(.touch-device) .kontakt-main a:active {
   font-weight: 600;
 }
 
-html:not(.touch-device) .footer-nav li a:hover,
-html:not(.touch-device) .footer-nav li a:active {
+.footer-nav li a:hover,
+.footer-nav li a:active {
   text-decoration: none !important;
   color: #888 !important;
   -webkit-text-fill-color: #888 !important;
@@ -474,7 +474,7 @@ html:not(.touch-device) .footer-nav li a:active {
   margin-right: 16px;
 }
 
-html:not(.touch-device) .slider-btn:hover {
+.slider-btn:hover {
   color: #888;
 }
 
@@ -543,7 +543,7 @@ html:not(.touch-device) .slider-btn:hover {
   text-align: left;         /* ← Einträge linksbündig */
 }
 
-html:not(.touch-device) .dropdown li:hover {
+.dropdown li:hover {
   background: #f0f0f0;
 }
 
@@ -557,7 +557,7 @@ html:not(.touch-device) .dropdown li:hover {
   transition: opacity 0.2s ease;
 }
 
-html:not(.touch-device) .filter-box .clear-btn:hover {
+.filter-box .clear-btn:hover {
   color: #000;
 }
 
@@ -710,10 +710,10 @@ html:not(.touch-device) .filter-box .clear-btn:hover {
   border-right: 2px solid #000;
 }
 
-html:not(.touch-device) .fullscreen-btn:hover::before,
-html:not(.touch-device) .fullscreen-btn:hover::after,
-html:not(.touch-device) .fullscreen-btn:hover .fc-bl,
-html:not(.touch-device) .fullscreen-btn:hover .fc-br {
+.fullscreen-btn:hover::before,
+.fullscreen-btn:hover::after,
+.fullscreen-btn:hover .fc-bl,
+.fullscreen-btn:hover .fc-br {
   border-color: #888;
 }
 
@@ -766,7 +766,7 @@ html:not(.touch-device) .fullscreen-btn:hover .fc-br {
   z-index: 10;
 }
 
-html:not(.touch-device) .fullscreen-close:hover {
+.fullscreen-close:hover {
   color: #888;
 }
 
@@ -775,7 +775,7 @@ html:not(.touch-device) .fullscreen-close:hover {
   color: #000;
 }
 
-html:not(.touch-device) .fullscreen-overlay .slider-btn:hover {
+.fullscreen-overlay .slider-btn:hover {
   color: #888;
 }
 
@@ -801,8 +801,8 @@ html:not(.touch-device) .fullscreen-overlay .slider-btn:hover {
   appearance: none;
 }
 
-html:not(.touch-device) .filter-toggle:hover,
-html:not(.touch-device) .filter-toggle:active {
+.filter-toggle:hover,
+.filter-toggle:active {
   color: #888;
   border-color: #888;
 }
@@ -900,7 +900,7 @@ html:not(.touch-device) .filter-toggle:active {
   margin-bottom: 16px;  /* ← margin statt padding, wird nicht eingefärbt */
 }
 
-html:not(.touch-device) .filter-modal .filter-box:hover .dropdown {
+.filter-modal .filter-box:hover .dropdown {
   display: none;
 }
 
@@ -960,7 +960,7 @@ html:not(.touch-device) .filter-modal .filter-box:hover .dropdown {
   transition: transform 0.3s ease;
 }
 
-html:not(.touch-device) .drawer-close:hover {
+.drawer-close:hover {
   color: #888;
 }
 
@@ -994,8 +994,8 @@ html:not(.touch-device) .drawer-close:hover {
   font-size: 18px;
 }
 
-html:not(.touch-device) .nav-drawer nav ul li a:hover,
-html:not(.touch-device) .nav-drawer nav ul li a:active {
+.nav-drawer nav ul li a:hover,
+.nav-drawer nav ul li a:active {
   text-decoration: none !important;
   color: #888 !important;
   -webkit-text-fill-color: #888 !important;
@@ -1017,8 +1017,8 @@ html:not(.touch-device) .nav-drawer nav ul li a:active {
   text-align: center;
 }
 
-html:not(.touch-device) .anfrage-btn:hover,
-html:not(.touch-device) .anfrage-btn:active {
+.anfrage-btn:hover,
+.anfrage-btn:active {
   color: #888 !important;
   -webkit-text-fill-color: #888 !important;
   border-color: #888;
@@ -1054,7 +1054,7 @@ html:not(.touch-device) .anfrage-btn:active {
   color: inherit;
 }
 
-html:not(.touch-device) .produkt-sektion-toggle:hover {
+.produkt-sektion-toggle:hover {
   opacity: 0.7;
 }
 
@@ -1105,7 +1105,7 @@ html:not(.touch-device) .produkt-sektion-toggle:hover {
   flex-shrink: 0;
 }
 
-html:not(.touch-device) .fullscreen-dots .dot:hover {
+.fullscreen-dots .dot:hover {
   border-color: #888;
   background: #888;
 }
@@ -1139,7 +1139,7 @@ html:not(.touch-device) .fullscreen-dots .dot:hover {
   flex-shrink: 0; /* ← verhindert Stauchung durch flex */
 }
 
-html:not(.touch-device) .neuheiten-dots .dot:hover {
+.neuheiten-dots .dot:hover {
   border-color: #888;
   background: #888;
 }
@@ -1270,7 +1270,7 @@ html:not(.touch-device) .neuheiten-dots .dot:hover {
     width:auto;
     max-width:100%;
     height:auto;
-    max-height:360px;
+    max-height:390px;
     object-fit:contain;
     display:block;
 }
