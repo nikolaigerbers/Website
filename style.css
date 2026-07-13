@@ -1545,11 +1545,16 @@ a:active {
 .neuheiten-track-wrapper {
   width: 100%;
   overflow: hidden;
+  display: flex;
+  justify-content: center;
 }
 
 .neuheiten-track {
   display: flex;
-  gap: 30px;
+  gap: 30px; /* bleibt immer gleich */
+  justify-content: center;
+  width: max-content;
+  margin: 0 auto;
 }
 
 .neuheiten-track .grid-item {
