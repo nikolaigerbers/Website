@@ -1083,6 +1083,45 @@ a:active {
   background: #000;
 }
 
+/* Dots IMMER unter dem kompletten Slider */
+.neuheiten-dots {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  margin-top: 20px;
+  clear: both;
+  z-index: 1;
+}
+
+.neuheiten-dots .dot {
+  display: inline-block; /* ← das fehlte */
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 1.5px solid #000;
+  background: transparent;
+  cursor: pointer;
+  transition: background 0.2s;
+  flex-shrink: 0; /* ← verhindert Stauchung durch flex */
+}
+
+.neuheiten-dots .dot:hover {
+  border-color: #888;
+  background: #888;
+}
+
+.neuheiten-dots .dot.active {
+  background: #000;
+}
+
+.neuheiten-dots .dot.active:hover {
+  border-color: #000;
+  background: #000;
+}
+
 .slider-dots {
   position: absolute;
   bottom: 0;
