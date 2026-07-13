@@ -547,11 +547,30 @@ function initNeuheiten() {
   return parseFloat(getComputedStyle(track).gap) || 0;
 }
 
-  function getCardWidth() {
-    const gap = getGap();
-    const count = getCount();
-    return (wrapper.offsetWidth - gap * (count - 1)) / count;
-  }
+// NEU: maximale Kartenbreite, damit Karten bei wenigen Produkten
+// nicht über die volle Breite gestreckt werden
+function getMaxCardWidth() {
+  const count = getCount();
+  if (count === 2) return 260;
+  if (count === 3) return 240;
+  return 220;
+}
+
+function getCardWidth() {
+  const gap = getGap();
+  const count = getCount();
+  const evenWidth = (wrapper.offsetWidth - gap * (count - 1)) / count;
+  return Math.min(evenWidth, getMaxCardWidth());
+}
+
+// NEU: zentriert die Kartenreihe, wenn sie schmaler ist als der Wrapper
+function getCenterOffset() {
+  const gap = getGap();
+  const count = getCount();
+  const cardWidth = getCardWidth();
+  const contentWidth = count * cardWidth + gap * (count - 1);
+  return Math.max(0, (wrapper.offsetWidth - contentWidth) / 2);
+}
 
   function makeCard(p) {
     const item = document.createElement("div");
@@ -589,16 +608,17 @@ function initNeuheiten() {
   // neuheitenIndex zeigt immer auf die mittlere (echte) Gruppe
   // Offset: total Karten vor dem echten Block
   function positionTrack(animated) {
-    const cardWidth = getCardWidth();
-    const gap = getGap();
-    const absoluteIndex = total + neuheitenIndex; // mittlere Gruppe
-    const offset = absoluteIndex * (cardWidth + gap);
+  const cardWidth = getCardWidth();
+  const gap = getGap();
+  const centerOffset = getCenterOffset();
+  const absoluteIndex = total + neuheitenIndex;
+  const offset = absoluteIndex * (cardWidth + gap) - centerOffset;
 
-    track.style.transition = animated
-      ? "transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)"
-      : "none";
-    track.style.transform = `translateX(-${offset}px)`;
-  }
+  track.style.transition = animated
+    ? "transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)"
+    : "none";
+  track.style.transform = `translateX(-${offset}px)`;
+}
 
   function updateDots() {
     if (!dotsContainer) return;
@@ -646,56 +666,55 @@ function initNeuheiten() {
   }
 
   function handleNext() {
-    if (neuheitenAnimating) return;
+  if (neuheitenAnimating) return;
 
-    // Sind wir am Ende der echten Gruppe? → animiert in Klon-Gruppe gleiten, dann lautlos zurück
-    if (neuheitenIndex === total - 1) {
-      neuheitenAnimating = true;
-      // Animiert zur ersten Karte der hinteren Klon-Gruppe (Index: 2*total)
-      const cardWidth = getCardWidth();
-      const gap = getGap();
-      track.style.transition = "transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)";
-      track.style.transform = `translateX(-${2 * total * (cardWidth + gap)}px)`;
-      updateDots(); // Dot 0 wird aktiv
-      setTimeout(() => {
-        neuheitenIndex = 0;
-        positionTrack(false); // lautlos zurück zur echten Gruppe
-        neuheitenAnimating = false;
-        updateDots();
-      }, 420);
-    } else {
-      neuheitenIndex++;
-      positionTrack(true);
+  if (neuheitenIndex === total - 1) {
+    neuheitenAnimating = true;
+    const cardWidth = getCardWidth();
+    const gap = getGap();
+    const centerOffset = getCenterOffset();
+    track.style.transition = "transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)";
+    track.style.transform = `translateX(-${2 * total * (cardWidth + gap) - centerOffset}px)`;
+    updateDots();
+    setTimeout(() => {
+      neuheitenIndex = 0;
+      positionTrack(false);
+      neuheitenAnimating = false;
       updateDots();
-      setTimeout(() => { neuheitenAnimating = false; }, 420);
-      neuheitenAnimating = true;
-    }
+    }, 420);
+  } else {
+    neuheitenIndex++;
+    positionTrack(true);
+    updateDots();
+    setTimeout(() => { neuheitenAnimating = false; }, 420);
+    neuheitenAnimating = true;
   }
+}
 
   function handlePrev() {
-    if (neuheitenAnimating) return;
+  if (neuheitenAnimating) return;
 
-    if (neuheitenIndex === 0) {
-      neuheitenAnimating = true;
-      // Animiert zur letzten Karte der vorderen Klon-Gruppe (Index: total-1)
-      const cardWidth = getCardWidth();
-      const gap = getGap();
-      track.style.transition = "transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)";
-      track.style.transform = `translateX(-${(total - 1) * (cardWidth + gap)}px)`;
-      setTimeout(() => {
-        neuheitenIndex = total - 1;
-        positionTrack(false); // lautlos zur echten Gruppe
-        neuheitenAnimating = false;
-        updateDots();
-      }, 420);
-    } else {
-      neuheitenAnimating = true;
-      neuheitenIndex--;
-      positionTrack(true);
+  if (neuheitenIndex === 0) {
+    neuheitenAnimating = true;
+    const cardWidth = getCardWidth();
+    const gap = getGap();
+    const centerOffset = getCenterOffset();
+    track.style.transition = "transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)";
+    track.style.transform = `translateX(-${(total - 1) * (cardWidth + gap) - centerOffset}px)`;
+    setTimeout(() => {
+      neuheitenIndex = total - 1;
+      positionTrack(false);
+      neuheitenAnimating = false;
       updateDots();
-      setTimeout(() => { neuheitenAnimating = false; }, 420);
-    }
+    }, 420);
+  } else {
+    neuheitenAnimating = true;
+    neuheitenIndex--;
+    positionTrack(true);
+    updateDots();
+    setTimeout(() => { neuheitenAnimating = false; }, 420);
   }
+}
 
   // Dots aufbauen
   if (dotsContainer) {
