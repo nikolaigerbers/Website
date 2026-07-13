@@ -1306,10 +1306,9 @@ a:active {
   }
 
   .neuheiten-slider {
-    flex: 1;
-    min-height: 0;
-    align-items: stretch;
-  }
+  display: flex;
+  flex-direction: column;
+}
 
   .neuheiten-track {
     gap: 10px;
@@ -1499,7 +1498,8 @@ a:active {
 
 .neuheiten-slider {
   position: relative;
-  align-items: center;
+  display: flex;
+  flex-direction: column;
 }
 
 .neuheiten-track-wrapper {
@@ -1510,7 +1510,6 @@ a:active {
 .neuheiten-track {
   display: flex;
   gap: 30px;
-      /* mehr Abstand zum linken/rechten Rand */
 }
 
 .neuheiten-track .grid-item {
@@ -1527,10 +1526,21 @@ a:active {
   display: block;
 }
 
-.neuheiten-dots {
+/* Beschreibung bleibt immer unter dem Bild */
+.neuheiten-track .grid-item .caption {
   flex-shrink: 0;
-  position: static;
+  margin-top: 10px;
+}
+
+/* Dots IMMER unterhalb der Karten */
+.neuheiten-dots {
+  position: static !important;
+  order: 2;
   margin-top: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-shrink: 0;
 }
 
 /* Buttons bleiben über den Karten */
