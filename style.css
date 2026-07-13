@@ -1545,9 +1545,3 @@ a:active {
   object-fit: contain;
   display: block;
 }
-
-@media (hover: none) {
-  *:hover {
-    all: unset;
-  }
-}
