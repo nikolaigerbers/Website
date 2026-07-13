@@ -26,7 +26,7 @@ a:focus {
   -webkit-text-fill-color: #000;
 }
 
-a:hover,
+html:not(.touch-device) a:hover,
 a:active {
   text-decoration: none !important;
   color: #888 !important;
@@ -91,7 +91,7 @@ a:active {
   font-size: 16px;
 }
 
-.header-nav a:hover, 
+html:not(.touch-device) .header-nav a:hover, 
 .header-nav a:active {
   text-decoration: none !important;
   color: #888 !important;
@@ -165,25 +165,25 @@ a:active {
   flex-shrink: 0;
 }
 
-.hd-list li a:hover,
+html:not(.touch-device) .hd-list li a:hover,
 .hd-list li a:active {
   background: #f5f5f5;
   color: #888 !important;
   -webkit-text-fill-color: #888 !important;
 }
 
-.hd-list li a:hover::after {
+html:not(.touch-device) .hd-list li a:hover::after {
   color: #888;
 }
 
 
 /* Grid */
 
-.grid-item a:hover img {
+html:not(.touch-device) .grid-item a:hover img {
   transform: scale(1.08);
 }
 
-.grid-item img:hover {
+html:not(.touch-device) .grid-item img:hover {
   transform: none;  /* ← alten Hover vom img entfernen */
 }
 
@@ -196,7 +196,7 @@ a:active {
 }
 
 .grid-item a,
-.grid-item a:hover,
+html:not(.touch-device) .grid-item a:hover,
 .grid-item a:focus,
 .grid-item a:active {
   text-decoration: none !important;
@@ -221,7 +221,7 @@ a:active {
   border-radius: 12px;
   transition: transform 0.3s;
 }
-.grid-item img:hover {
+html:not(.touch-device) .grid-item img:hover {
   transform: scale(1.08);
 }
 .caption {
@@ -261,7 +261,7 @@ a:active {
   color: black;
 }
 
-.centered a:hover,
+html:not(.touch-device) .centered a:hover,
 .centered a:active {
   text-decoration: none !important;
   color: #888 !important;
@@ -329,7 +329,7 @@ a:active {
   text-decoration: none;
 }
 
-.kontakt-main a:hover,
+html:not(.touch-device) .kontakt-main a:hover,
 .kontakt-main a:active {
   text-decoration: none !important;
   color: #888 !important;
@@ -362,7 +362,7 @@ a:active {
   font-weight: 600;
 }
 
-.footer-nav li a:hover,
+html:not(.touch-device) .footer-nav li a:hover,
 .footer-nav li a:active {
   text-decoration: none !important;
   color: #888 !important;
@@ -474,7 +474,7 @@ a:active {
   margin-right: 16px;
 }
 
-.slider-btn:hover {
+html:not(.touch-device) .slider-btn:hover {
   color: #888;
 }
 
@@ -543,7 +543,7 @@ a:active {
   text-align: left;         /* ← Einträge linksbündig */
 }
 
-.dropdown li:hover {
+html:not(.touch-device) .dropdown li:hover {
   background: #f0f0f0;
 }
 
@@ -557,7 +557,7 @@ a:active {
   transition: opacity 0.2s ease;
 }
 
-.filter-box .clear-btn:hover {
+html:not(.touch-device) .filter-box .clear-btn:hover {
   color: #000;
 }
 
@@ -710,10 +710,10 @@ a:active {
   border-right: 2px solid #000;
 }
 
-.fullscreen-btn:hover::before,
-.fullscreen-btn:hover::after,
-.fullscreen-btn:hover .fc-bl,
-.fullscreen-btn:hover .fc-br {
+html:not(.touch-device) .fullscreen-btn:hover::before,
+html:not(.touch-device) .fullscreen-btn:hover::after,
+html:not(.touch-device) .fullscreen-btn:hover .fc-bl,
+html:not(.touch-device) .fullscreen-btn:hover .fc-br {
   border-color: #888;
 }
 
@@ -766,7 +766,7 @@ a:active {
   z-index: 10;
 }
 
-.fullscreen-close:hover {
+html:not(.touch-device) .fullscreen-close:hover {
   color: #888;
 }
 
@@ -775,7 +775,7 @@ a:active {
   color: #000;
 }
 
-.fullscreen-overlay .slider-btn:hover {
+html:not(.touch-device) .fullscreen-overlay .slider-btn:hover {
   color: #888;
 }
 
@@ -801,7 +801,7 @@ a:active {
   appearance: none;
 }
 
-.filter-toggle:hover,
+html:not(.touch-device) .filter-toggle:hover,
 .filter-toggle:active {
   color: #888;
   border-color: #888;
@@ -900,7 +900,7 @@ a:active {
   margin-bottom: 16px;  /* ← margin statt padding, wird nicht eingefärbt */
 }
 
-.filter-modal .filter-box:hover .dropdown {
+html:not(.touch-device) .filter-modal .filter-box:hover .dropdown {
   display: none;
 }
 
@@ -960,7 +960,7 @@ a:active {
   transition: transform 0.3s ease;
 }
 
-.drawer-close:hover {
+html:not(.touch-device) .drawer-close:hover {
   color: #888;
 }
 
@@ -994,7 +994,7 @@ a:active {
   font-size: 18px;
 }
 
-.nav-drawer nav ul li a:hover,
+html:not(.touch-device) .nav-drawer nav ul li a:hover,
 .nav-drawer nav ul li a:active {
   text-decoration: none !important;
   color: #888 !important;
@@ -1017,7 +1017,7 @@ a:active {
   text-align: center;
 }
 
-.anfrage-btn:hover,
+html:not(.touch-device) .anfrage-btn:hover,
 .anfrage-btn:active {
   color: #888 !important;
   -webkit-text-fill-color: #888 !important;
@@ -1054,7 +1054,7 @@ a:active {
   color: inherit;
 }
 
-.produkt-sektion-toggle:hover {
+html:not(.touch-device) .produkt-sektion-toggle:hover {
   opacity: 0.7;
 }
 
@@ -1105,7 +1105,7 @@ a:active {
   flex-shrink: 0;
 }
 
-.fullscreen-dots .dot:hover {
+html:not(.touch-device) .fullscreen-dots .dot:hover {
   border-color: #888;
   background: #888;
 }
@@ -1114,7 +1114,7 @@ a:active {
   background: #000;
 }
 
-.fullscreen-dots .dot.active:hover {
+html:not(.touch-device) .fullscreen-dots .dot.active:hover {
   border-color: #000;
   background: #000;
 }
@@ -1139,7 +1139,7 @@ a:active {
   flex-shrink: 0; /* ← verhindert Stauchung durch flex */
 }
 
-.neuheiten-dots .dot:hover {
+html:not(.touch-device) .neuheiten-dots .dot:hover {
   border-color: #888;
   background: #888;
 }
@@ -1148,7 +1148,7 @@ a:active {
   background: #000;
 }
 
-.neuheiten-dots .dot.active:hover {
+html:not(.touch-device) .neuheiten-dots .dot.active:hover {
   border-color: #000;
   background: #000;
 }
@@ -1178,7 +1178,7 @@ a:active {
   background: #888;
 }
 
-.slider-dots .dot.active:hover {
+html:not(.touch-device) .slider-dots .dot.active:hover {
   border-color: #000;
   background: #000;
 }

@@ -1,3 +1,11 @@
+// Touch-Geräte erkennen
+if (
+  navigator.maxTouchPoints > 0 ||
+  window.matchMedia("(pointer: coarse)").matches
+) {
+  document.documentElement.classList.add("touch-device");
+}
+
 // =====================
 // PRODUKT SLIDER
 // =====================
