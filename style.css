@@ -1556,8 +1556,7 @@ a:active {
   color: #888;
 }
 
-.filter-toggle:hover,
-.filter-toggle:active {
+.filter-toggle:hover{
   color: #888;
   border-color: #888;
 }
