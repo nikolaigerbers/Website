@@ -1510,8 +1510,7 @@ a:active {
 
 .neuheiten-track {
   display: flex;
-  gap: 30px;
-  padding: 60px 60px;        /* mehr Abstand zum linken/rechten Rand */
+  gap: 30px;      /* mehr Abstand zum linken/rechten Rand */
 }
 
 .neuheiten-track .grid-item {
