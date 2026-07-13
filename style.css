@@ -596,23 +596,7 @@ a:active {
 
 
 
-/* Buttons bleiben über den Karten */
-.neuheiten-slider .slider-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 10;
-}
 
-.neuheiten-slider .neuheiten-prev {
-  left: 0;
-  transform: translateY(-50%) rotate(-90deg);
-}
-
-.neuheiten-slider .neuheiten-next {
-  right: 0;
-  transform: translateY(-50%) rotate(90deg);
-}
 
 .photo-slider button {
   position: absolute;
@@ -1547,4 +1531,22 @@ a:active {
   flex-shrink: 0;
   position: static;
   margin-top: 20px;
+}
+
+/* Buttons bleiben über den Karten */
+.neuheiten-slider .slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+}
+
+.neuheiten-slider .neuheiten-prev {
+  left: 0;
+  transform: translateY(-50%) rotate(-90deg);
+}
+
+.neuheiten-slider .neuheiten-next {
+  right: 0;
+  transform: translateY(-50%) rotate(90deg);
 }
