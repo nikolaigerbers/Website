@@ -1306,9 +1306,12 @@ a:active {
   }
 
   .neuheiten-slider {
-  display: flex;
-  flex-direction: column;
-}
+    flex: 1;
+    min-height: 0;
+    align-items: stretch;
+    display: flex;
+    flex-direction: column;
+  }
 
   .neuheiten-track {
     gap: 10px;
