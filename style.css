@@ -1235,17 +1235,80 @@ a:active {
 
 
 /* ← Desktop & geringe Höhe */
+@media (min-width: 769px) and (max-height: 600px) {
 
+    body{
+        overflow-y:auto;
+    }
+
+    .screen-1 {
+    height: auto !important;
+    overflow: visible !important;
+    display: flex;
+    flex-direction: column;
+
+    }
+
+    .screen-2{
+        height:auto;
+        overflow:visible;
+    }
+
+    .main-main{
+        overflow:visible;
+    }
+
+    .hero-image-wrap{
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        background:#fff;
+        padding:30px 0;
+    }
+
+    .hero-image{
+    width:auto;
+    max-width:100%;
+    height:auto;
+    max-height:390px;
+    object-fit:contain;
+    display:block;
+}
+}
 
 /* ===== DESKTOP: 2-Screen-Layout ===== */
 /* Nur aktiv wenn Fenster breit UND hoch genug */
 @media (min-width: 769px) and (min-height: 601px) {
 
   /* Screen 1 als Flex-Container */
+.screen-1{
+    min-height:100dvh;
+    height:auto;
+}
 
 .site-header,
 .hero-tagline{
     flex:0 0 auto;
+}
+
+.hero-image-wrap{
+    flex:1 1 auto;
+    min-height:0;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    overflow:hidden;
+    background:#fff;
+}
+
+.hero-image{
+    max-width:100%;
+    max-height:100%;
+    width:auto;
+    height:auto;
+    display:block;
 }
 
   .screen-2 {
@@ -1299,39 +1362,6 @@ a:active {
 
   .neuheiten-track .grid-item .caption {
     flex-shrink: 0;
-  }
-}
-
-/* ===== DESKTOP: Screen 1 (Hero) – ein durchgehender Modus, kein Umschalten ===== */
-@media (min-width: 769px) {
-
-  .screen-1 {
-    height: auto !important;
-    min-height: 100dvh;
-    overflow: visible !important;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .site-header,
-  .hero-tagline {
-    flex: 0 0 auto;
-  }
-
-  .hero-image-wrap {
-    flex: 1 1 auto;
-    min-height: 390px; /* Bild wird nie kleiner als das hier */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    background: #fff;
-  }
-
-  .hero-image {
-    width: auto;
-    height: auto;
-    display: block;
   }
 }
 
