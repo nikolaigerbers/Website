@@ -1306,12 +1306,10 @@ a:active {
   }
 
   .neuheiten-slider {
-  flex: 1;
-  min-height: 0;
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-}
+    flex: 1;
+    min-height: 0;
+    align-items: stretch;
+  }
 
   .neuheiten-track {
     gap: 10px;
@@ -1501,20 +1499,19 @@ a:active {
 
 .neuheiten-slider {
   position: relative;
-  display: flex;
-  flex-direction: column;
   flex-shrink: 0;
+  align-items: center;
 }
 
 .neuheiten-track-wrapper {
   width: 100%;
   overflow: hidden;
-  flex-shrink: 0;
 }
 
 .neuheiten-track {
   display: flex;
-  gap: 10px;
+  gap: 30px;
+      /* mehr Abstand zum linken/rechten Rand */
 }
 
 .neuheiten-track .grid-item {
@@ -1522,10 +1519,6 @@ a:active {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-.neuheiten-track .grid-item .caption {
-  flex-shrink: 0;
 }
 
 .neuheiten-track .grid-item img {
@@ -1536,10 +1529,9 @@ a:active {
 }
 
 .neuheiten-dots {
-  position: static;
   flex-shrink: 0;
-  margin-top: 25px;
-  height: 20px;
+  position: static;
+  margin-top: 20px;
 }
 
 /* Buttons bleiben über den Karten */
