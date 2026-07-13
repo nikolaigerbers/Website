@@ -1267,10 +1267,13 @@ a:active {
     }
 
     .hero-image{
-        height:auto;
-        object-fit:contain;
-        display:block;
-    }
+    width:auto;
+    max-width:100%;
+    height:auto;
+    max-height:65vh;
+    object-fit:contain;
+    display:block;
+}
 }
 
 /* ===== DESKTOP: 2-Screen-Layout ===== */
@@ -1520,31 +1523,11 @@ a:active {
     overflow-y: auto !important;
   }
 
-  .neuheiten-slider {
-    align-items: center;
-  }
-
-  .neuheiten-track .grid-item {
-    display: grid;
-    gap: 10px;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    flex-direction: column;
-    justify-content: center;
-  }
-
-  .neuheiten-track .grid-item img {
-    height: 300px;
-    max-height: 100%;
-    width: 100%;
-    object-fit: contain;
-    display: block;
-  }
-
 }
 
-/* FIXE Bildfläche 
+/* FIXE Bildfläche */
 .neuheiten-slider {
-  align-items: center;
+  align-items: center; /* statt stretch */
 }
 
 .neuheiten-track .grid-item {
@@ -1552,7 +1535,7 @@ a:active {
   gap: 10px;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   flex-direction: column;
-  justify-content: center;
+  justify-content: center; /* zentriert Bild+Caption-Block vertikal */
 }
 
 .neuheiten-track .grid-item img {
@@ -1561,4 +1544,4 @@ a:active {
   width: 100%;
   object-fit: contain;
   display: block;
-}*/
+}
