@@ -27,7 +27,7 @@ a:focus {
 }
 
 html:not(.touch-device) a:hover,
-a:active {
+html:not(.touch-device) a:active {
   text-decoration: none !important;
   color: #888 !important;
   -webkit-text-fill-color: #888 !important;
@@ -92,7 +92,7 @@ a:active {
 }
 
 html:not(.touch-device) .header-nav a:hover, 
-.header-nav a:active {
+html:not(.touch-device) .header-nav a:active {
   text-decoration: none !important;
   color: #888 !important;
   -webkit-text-fill-color: #888 !important;
@@ -166,7 +166,7 @@ html:not(.touch-device) .header-nav a:hover,
 }
 
 html:not(.touch-device) .hd-list li a:hover,
-.hd-list li a:active {
+html:not(.touch-device) .hd-list li a:active {
   background: #f5f5f5;
   color: #888 !important;
   -webkit-text-fill-color: #888 !important;
@@ -198,7 +198,7 @@ html:not(.touch-device) .grid-item img:hover {
 .grid-item a,
 html:not(.touch-device) .grid-item a:hover,
 .grid-item a:focus,
-.grid-item a:active {
+html:not(.touch-device) .grid-item a:active {
   text-decoration: none !important;
 }
 
@@ -262,7 +262,7 @@ html:not(.touch-device) .grid-item img:hover {
 }
 
 html:not(.touch-device) .centered a:hover,
-.centered a:active {
+html:not(.touch-device) .centered a:active {
   text-decoration: none !important;
   color: #888 !important;
   -webkit-text-fill-color: #888 !important;
@@ -330,7 +330,7 @@ html:not(.touch-device) .centered a:hover,
 }
 
 html:not(.touch-device) .kontakt-main a:hover,
-.kontakt-main a:active {
+html:not(.touch-device) .kontakt-main a:active {
   text-decoration: none !important;
   color: #888 !important;
   -webkit-text-fill-color: #888 !important;
@@ -363,7 +363,7 @@ html:not(.touch-device) .kontakt-main a:hover,
 }
 
 html:not(.touch-device) .footer-nav li a:hover,
-.footer-nav li a:active {
+html:not(.touch-device) .footer-nav li a:active {
   text-decoration: none !important;
   color: #888 !important;
   -webkit-text-fill-color: #888 !important;
@@ -448,7 +448,7 @@ html:not(.touch-device) .footer-nav li a:hover,
   max-height: 90vh;   /* ← Desktop: großzügig */
   object-fit: contain;
 }
-.slides img.active {
+html:not(.touch-device) .slides img.active {
   display: block;
 }
 
@@ -561,7 +561,7 @@ html:not(.touch-device) .filter-box .clear-btn:hover {
   color: #000;
 }
 
-.filter-box.active .clear-btn {
+html:not(.touch-device) .filter-box.active .clear-btn {
   opacity: 1;
   pointer-events: auto;
 }
@@ -588,7 +588,7 @@ html:not(.touch-device) .filter-box .clear-btn:hover {
   object-fit: contain;
 }
 
-.slide.active {
+html:not(.touch-device) .slide.active {
   display: block;
 }
 
@@ -802,7 +802,7 @@ html:not(.touch-device) .fullscreen-overlay .slider-btn:hover {
 }
 
 html:not(.touch-device) .filter-toggle:hover,
-.filter-toggle:active {
+html:not(.touch-device) .filter-toggle:active {
   color: #888;
   border-color: #888;
 }
@@ -995,7 +995,7 @@ html:not(.touch-device) .drawer-close:hover {
 }
 
 html:not(.touch-device) .nav-drawer nav ul li a:hover,
-.nav-drawer nav ul li a:active {
+html:not(.touch-device) .nav-drawer nav ul li a:active {
   text-decoration: none !important;
   color: #888 !important;
   -webkit-text-fill-color: #888 !important;
@@ -1018,7 +1018,7 @@ html:not(.touch-device) .nav-drawer nav ul li a:hover,
 }
 
 html:not(.touch-device) .anfrage-btn:hover,
-.anfrage-btn:active {
+html:not(.touch-device) .anfrage-btn:active {
   color: #888 !important;
   -webkit-text-fill-color: #888 !important;
   border-color: #888;
@@ -1110,7 +1110,7 @@ html:not(.touch-device) .fullscreen-dots .dot:hover {
   background: #888;
 }
 
-.fullscreen-dots .dot.active {
+html:not(.touch-device) .fullscreen-dots .dot.active {
   background: #000;
 }
 
@@ -1144,7 +1144,7 @@ html:not(.touch-device) .neuheiten-dots .dot:hover {
   background: #888;
 }
 
-.neuheiten-dots .dot.active {
+html:not(.touch-device) .neuheiten-dots .dot.active {
   background: #000;
 }
 
@@ -1183,7 +1183,7 @@ html:not(.touch-device) .slider-dots .dot.active:hover {
   background: #000;
 }
 
-.slider-dots .dot.active {
+html:not(.touch-device) .slider-dots .dot.active {
   background: #000;
 }
 
