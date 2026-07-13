@@ -1499,19 +1499,20 @@ a:active {
 
 .neuheiten-slider {
   position: relative;
+  display: flex;
+  flex-direction: column;
   flex-shrink: 0;
-  align-items: center;
 }
 
 .neuheiten-track-wrapper {
   width: 100%;
   overflow: hidden;
+  flex-shrink: 0;
 }
 
 .neuheiten-track {
   display: flex;
-  gap: 30px;
-      /* mehr Abstand zum linken/rechten Rand */
+  gap: 10px;
 }
 
 .neuheiten-track .grid-item {
@@ -1521,6 +1522,12 @@ a:active {
   align-items: center;
 }
 
+.neuheiten-track .grid-item .caption {
+  flex-shrink: 0;
+}
+
+
+
 .neuheiten-track .grid-item img {
   width: 100%;
   height: 300px;
@@ -1529,9 +1536,10 @@ a:active {
 }
 
 .neuheiten-dots {
-  flex-shrink: 0;
   position: static;
-  margin-top: 20px;
+  flex-shrink: 0;
+  margin-top: 25px;
+  height: 20px;
 }
 
 /* Buttons bleiben über den Karten */
