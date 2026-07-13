@@ -1505,7 +1505,9 @@ a:active {
   justify-content: flex-start;
 }
 
-
+.neuheiten-track-wrapper {
+  flex: 0 0 auto;
+}
 
 .neuheiten-track .grid-item img {
   width: 100%;
@@ -1528,9 +1530,7 @@ a:active {
   flex-shrink: 0;
 }
 
-.neuheiten-track-wrapper {
-  flex: 0 0 auto;
-}
+
 
 .neuheiten-track .grid-item img {
   width: 100%;
