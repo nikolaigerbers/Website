@@ -1499,7 +1499,6 @@ a:active {
 
 .neuheiten-slider {
   position: relative;
-  flex-shrink: 0;
   align-items: center;
 }
 
