@@ -1510,7 +1510,7 @@ a:active {
 
 .neuheiten-track {
   display: flex;
-  gap: 10px;              /* kleinere Abstände zwischen Karten */
+  gap: 30px;
   padding: 0 60px;        /* mehr Abstand zum linken/rechten Rand */
 }
 
