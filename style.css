@@ -1455,45 +1455,37 @@ a:active {
 
 }
 
-
+/* FIXE Bildfläche */
 /* ===== NEUHEITEN FINAL FIX ===== */
 
 .neuheiten-slider {
   position: relative;
   flex-shrink: 0;
   align-items: center;
-  display: flex;
 }
 
-/* Produktkarten im Neuheiten-Slider */
+.neuheiten-track-wrapper {
+  width: 100%;
+  overflow: hidden;
+}
+
+.neuheiten-track {
+  display: flex;
+  gap: 30px;
+}
+
 .neuheiten-track .grid-item {
   flex: 0 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
 }
 
-/* Bildfläche gleich hoch wie Slider-Bereich */
 .neuheiten-track .grid-item img {
   width: 100%;
-  height: 300px; /* gewünschte Kartenhöhe */
+  height: 300px;
   object-fit: contain;
   display: block;
-}
-
-/* Slider-Höhe richtet sich an den Karten aus */
-.neuheiten-track-wrapper {
-  display: flex;
-  align-items: center;
-  flex: 1;
-}
-
-.neuheiten-track {
-  display: flex;
-  align-items: center;
-  gap: 30px;
-}
 }
 
 .neuheiten-dots {
@@ -1518,43 +1510,4 @@ a:active {
 .neuheiten-slider .neuheiten-next {
   right: 0;
   transform: translateY(-50%) rotate(90deg);
-}
-
-/* Dots IMMER unter dem kompletten Slider */
-.neuheiten-dots {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-  width: 100%;
-  margin-top: 20px;
-  clear: both;
-  z-index: 1;
-}
-
-.neuheiten-dots .dot {
-  display: inline-block; /* ← das fehlte */
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  border: 1.5px solid #000;
-  background: transparent;
-  cursor: pointer;
-  transition: background 0.2s;
-  flex-shrink: 0; /* ← verhindert Stauchung durch flex */
-}
-
-.neuheiten-dots .dot:hover {
-  border-color: #888;
-  background: #888;
-}
-
-.neuheiten-dots .dot.active {
-  background: #000;
-}
-
-.neuheiten-dots .dot.active:hover {
-  border-color: #000;
-  background: #000;
 }
