@@ -1007,8 +1007,6 @@ document.querySelectorAll(".slider").forEach(slider => {
 
   let currentIndex = 0;
 
-  let fullscreenDirection = 1;
-
   function buildFullscreenDots(count) {  // ← neu
     if (!fullscreenDotsContainer) return;
     fullscreenDotsContainer.innerHTML = "";
