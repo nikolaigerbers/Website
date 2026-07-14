@@ -59,26 +59,13 @@ function showSlide(newIndex) {
 
 
   // Erstes Bild beim Laden anzeigen
-  if (
-    oldIndex === newIndex &&
-    !imgs[newIndex].classList.contains("active")
-  ) {
-
-    imgs[newIndex].classList.add("active");
-    imgs[newIndex].style.transform = "translateX(0)";
-    imgs[newIndex].style.opacity = "1";
-
-    // NEU: Inline-Styles wieder entfernen, sonst blockieren sie
-    // beim ersten Next/Prev die exit-left/exit-right Klassen
-    requestAnimationFrame(() => {
-      imgs[newIndex].style.transform = "";
-      imgs[newIndex].style.opacity = "";
-    });
-
-    updateFullscreenDots();
-    return;
-
-  }
+  if ( oldIndex === newIndex && !images[newIndex].classList.contains("active") ) { 
+    images[newIndex].classList.add("active"); 
+    images[newIndex].style.transform = "translateX(0)"; 
+    images[newIndex].style.opacity = "1"; 
+    
+    updateDots(); 
+    return; }
 
 
   const current = images[oldIndex];
@@ -168,7 +155,7 @@ function showSlide(newIndex) {
                                   // und blockiert beim nächsten Wechsel die
                                   // exit-Klasse dieses Bildes
 
-    updateFullscreenDots();
+    updateDots();
 
   }, 400);
 
