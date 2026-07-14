@@ -1007,6 +1007,8 @@ document.querySelectorAll(".slider").forEach(slider => {
 
   let currentIndex = 0;
 
+  let fullscreenDirection = 1;
+
   function buildFullscreenDots(count) {  // ← neu
     if (!fullscreenDotsContainer) return;
     fullscreenDotsContainer.innerHTML = "";
@@ -1044,14 +1046,125 @@ document.querySelectorAll(".slider").forEach(slider => {
     document.body.style.overflow = "hidden";
   }
 
-  function showFullscreenSlide(i) {
+  function showFullscreenSlide(newIndex) {
+
   const imgs = fullscreenSlides.querySelectorAll("img");
 
-  imgs.forEach((img, idx) => {
-    img.classList.toggle("active", idx === i);
+  const oldIndex = currentIndex;
+
+
+  // Erstes Bild anzeigen
+  if (
+    oldIndex === newIndex &&
+    !imgs[newIndex].classList.contains("active")
+  ) {
+
+    imgs[newIndex].classList.add("active");
+    imgs[newIndex].style.transform = "translateX(0)";
+    imgs[newIndex].style.opacity = "1";
+
+    updateFullscreenDots();
+    return;
+
+  }
+
+
+  const current = imgs[oldIndex];
+  const next = imgs[newIndex];
+
+
+  if (current === next) return;
+
+
+  // alte Animationen entfernen
+
+  next.classList.remove(
+    "exit-left",
+    "exit-right"
+  );
+
+
+  // neues Bild vorbereiten
+
+  next.classList.add("active");
+
+  next.style.transition = "none";
+
+
+  if (fullscreenDirection > 0) {
+
+    // Next → von rechts
+
+    next.style.transform = "translateX(100%)";
+
+  } else {
+
+    // Prev → von links
+
+    next.style.transform = "translateX(-100%)";
+
+  }
+
+
+  // Position erzwingen
+
+  next.offsetHeight;
+
+
+  // Transition wieder aktivieren
+
+  next.style.transition = "";
+
+
+  currentIndex = newIndex;
+
+
+  requestAnimationFrame(() => {
+
+
+    if (fullscreenDirection > 0) {
+
+      // aktuelles Bild nach links raus
+
+      current.classList.add("exit-left");
+
+    } else {
+
+      // aktuelles Bild nach rechts raus
+
+      current.classList.add("exit-right");
+
+    }
+
+
+    next.style.transform = "translateX(0)";
+
+
   });
 
-  updateFullscreenDots();
+
+  setTimeout(() => {
+
+
+    current.classList.remove(
+      "active",
+      "exit-left",
+      "exit-right"
+    );
+
+
+    current.style.transform = "";
+    current.style.opacity = "";
+
+
+    next.style.transform = "";
+
+
+    updateFullscreenDots();
+
+
+  }, 400);
+
 }
 
   function getCurrentSliderIndex() {
@@ -1094,16 +1207,28 @@ document.addEventListener("keydown", (e) => {
   });
 
   nextBtn?.addEventListener("click", () => {
-    const imgs = fullscreenSlides.querySelectorAll("img");
-    currentIndex = (currentIndex + 1) % imgs.length;
-    showFullscreenSlide(currentIndex);
-  });
+
+  const imgs = fullscreenSlides.querySelectorAll("img");
+
+  fullscreenDirection = 1;
+
+  showFullscreenSlide(
+    (currentIndex + 1) % imgs.length
+  );
+
+});
 
   prevBtn?.addEventListener("click", () => {
-    const imgs = fullscreenSlides.querySelectorAll("img");
-    currentIndex = (currentIndex - 1 + imgs.length) % imgs.length;
-    showFullscreenSlide(currentIndex);
-  });
+
+  const imgs = fullscreenSlides.querySelectorAll("img");
+
+  fullscreenDirection = -1;
+
+  showFullscreenSlide(
+    (currentIndex - 1 + imgs.length) % imgs.length
+  );
+
+});
 
   // Touch-Swipe
   let touchStartX = 0;
@@ -1117,10 +1242,21 @@ document.addEventListener("keydown", (e) => {
     if (Math.abs(diff) < 40) return; // zu kurz → kein Swipe
     const imgs = fullscreenSlides.querySelectorAll("img");
     if (diff > 0) {
-      currentIndex = (currentIndex + 1) % imgs.length;
-    } else {
-      currentIndex = (currentIndex - 1 + imgs.length) % imgs.length;
-    }
-    showFullscreenSlide(currentIndex);
+
+  fullscreenDirection = 1;
+
+  showFullscreenSlide(
+    (currentIndex + 1) % imgs.length
+  );
+
+} else {
+
+  fullscreenDirection = -1;
+
+  showFullscreenSlide(
+    (currentIndex - 1 + imgs.length) % imgs.length
+  );
+
+}
   }, { passive: true });
 });
