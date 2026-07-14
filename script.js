@@ -1051,9 +1051,17 @@ currentIndex = startIndex;
 overlay.classList.add("open");
 document.body.style.overflow = "hidden";
 
-// Erst rendern lassen, dann erstes Bild setzen
+// Reflow erzwingen, damit der erste Layout-Durchlauf
+// (display:none → flex, neue Bilder) sicher abgeschlossen ist
+overlay.offsetHeight;
+
+// Doppeltes rAF: erstes rAF garantiert nur, dass der Frame
+// nach dem Reflow gestartet ist – erst im zweiten ist das
+// Layout zuverlässig committed
 requestAnimationFrame(() => {
-  showFullscreenSlide(currentIndex);
+  requestAnimationFrame(() => {
+    showFullscreenSlide(currentIndex);
+  });
 });
   }
 
