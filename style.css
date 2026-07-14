@@ -1568,3 +1568,9 @@ a:active {
   right: 0;
   transform: translateY(-50%) rotate(90deg);
 }
+
+.Blog { 
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
