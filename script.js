@@ -1039,11 +1039,17 @@ document.querySelectorAll(".slider").forEach(slider => {
       clone.alt = img.alt;
       fullscreenSlides.appendChild(clone);
     });
-    buildFullscreenDots(images.length);  // ← neu
-    currentIndex = startIndex;
-    showFullscreenSlide(currentIndex);
-    overlay.classList.add("open");
-    document.body.style.overflow = "hidden";
+    buildFullscreenDots(images.length);
+
+currentIndex = startIndex;
+
+overlay.classList.add("open");
+document.body.style.overflow = "hidden";
+
+// Erst rendern lassen, dann erstes Bild setzen
+requestAnimationFrame(() => {
+  showFullscreenSlide(currentIndex);
+});
   }
 
   function showFullscreenSlide(newIndex) {
@@ -1168,12 +1174,16 @@ document.querySelectorAll(".slider").forEach(slider => {
 }
 
   function getCurrentSliderIndex() {
-    let idx = 0;
-    images.forEach((img, i) => {
-      if (img.style.display === "block") idx = i;
-    });
-    return idx;
-  }
+  let idx = 0;
+
+  images.forEach((img, i) => {
+    if (img.classList.contains("active")) {
+      idx = i;
+    }
+  });
+
+  return idx;
+}
 
   fullscreenBtn.addEventListener("click", () => {
     openFullscreen(getCurrentSliderIndex());
