@@ -52,8 +52,12 @@ function showSlide(newIndex) {
 
   const oldIndex = index;
 
-  // Erstes Bild initial anzeigen
-  if (oldIndex === newIndex && !images[newIndex].classList.contains("active")) {
+
+  // Erstes Bild beim Laden anzeigen
+  if (
+    oldIndex === newIndex &&
+    !images[newIndex].classList.contains("active")
+  ) {
 
     images[newIndex].classList.add("active");
     images[newIndex].style.transform = "translateX(0)";
@@ -61,49 +65,84 @@ function showSlide(newIndex) {
 
     updateDots();
     return;
+
   }
 
 
   const current = images[oldIndex];
   const next = images[newIndex];
 
+
   if (current === next) return;
 
 
-  // Zielbild vorbereiten
+  // alte Animationen entfernen
   next.classList.remove(
     "exit-left",
     "exit-right"
   );
 
 
-  next.style.transform = direction > 0
-    ? "translateX(100%)"
-    : "translateX(-100%)";
-
-
+  // neues Bild außerhalb positionieren
   next.classList.add("active");
 
+  next.style.transition = "none";
 
-  // Wichtig: Index sofort aktualisieren
+  if (direction > 0) {
+
+    // Next: von rechts einschieben
+    next.style.transform = "translateX(100%)";
+
+  } else {
+
+    // Prev: von links einschieben
+    next.style.transform = "translateX(-100%)";
+
+  }
+
+
+  // Browser zwingt die Position zu übernehmen
+  next.offsetHeight;
+
+
+  // Animation wieder aktivieren
+  next.style.transition = "";
+
+
+  // Index sofort aktualisieren
   index = newIndex;
 
 
   requestAnimationFrame(() => {
 
-    current.classList.add(
-      direction > 0
-        ? "exit-left"
-        : "exit-right"
-    );
 
+    // aktuelles Bild herausfahren
+
+    if (direction > 0) {
+
+      // Next
+      current.classList.add("exit-left");
+
+    } else {
+
+      // Prev
+      current.classList.add("exit-right");
+
+    }
+
+
+    // neues Bild einschieben
 
     next.style.transform = "translateX(0)";
+
 
   });
 
 
+  // Aufräumen nach Animation
+
   setTimeout(() => {
+
 
     current.classList.remove(
       "active",
@@ -111,10 +150,16 @@ function showSlide(newIndex) {
       "exit-right"
     );
 
+
     current.style.transform = "";
     current.style.opacity = "";
 
+
+    next.style.transform = "";
+
+
     updateDots();
+
 
   }, 400);
 
