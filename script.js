@@ -1073,6 +1073,13 @@ requestAnimationFrame(() => {
     imgs[newIndex].style.transform = "translateX(0)";
     imgs[newIndex].style.opacity = "1";
 
+    // NEU: Inline-Styles wieder entfernen, sonst blockieren sie
+    // beim ersten Next/Prev die exit-left/exit-right Klassen
+    requestAnimationFrame(() => {
+      imgs[newIndex].style.transform = "";
+      imgs[newIndex].style.opacity = "";
+    });
+
     updateFullscreenDots();
     return;
 
@@ -1159,23 +1166,20 @@ requestAnimationFrame(() => {
 
   setTimeout(() => {
 
-
     current.classList.remove(
       "active",
       "exit-left",
       "exit-right"
     );
 
-
     current.style.transform = "";
     current.style.opacity = "";
 
-
-    next.style.transform = "";
-
+    next.style.transform = "";   // NEU: sonst bleibt translateX(0) inline stehen
+                                  // und blockiert beim nächsten Wechsel die
+                                  // exit-Klasse dieses Bildes
 
     updateFullscreenDots();
-
 
   }, 400);
 
