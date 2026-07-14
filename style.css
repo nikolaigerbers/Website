@@ -88,8 +88,8 @@ a:active {
 .header-nav a {
   text-decoration: none;
   color: black;
-  font-size: 22px;
-  font-family: Impact, "Arial Narrow", sans-serif;
+  font-size: 20px;
+  font-weight: bold;
 }
 
 .header-nav a:hover, 
@@ -913,8 +913,8 @@ a:active {
 }
 
 .burger-btn img {
-  width: 24px;
-  height: 18px;
+  width: 32px;
+  height: 26px;
 }
 
 /* ===== NAV DRAWER / OVERLAY ===== */
