@@ -41,11 +41,11 @@ productSliders.forEach(slider => {
   }
 
   function showSlide(i) {
-    images.forEach((img, idx) => {
-      img.style.display = idx === i ? "block" : "none";
-    });
-    updateDots();
-  }
+  images.forEach((img, idx) => {
+    img.classList.toggle("active", idx === i);
+  });
+  updateDots();
+}
 
   showSlide(index);
 
@@ -900,7 +900,6 @@ document.querySelectorAll(".slider").forEach(slider => {
       const clone = document.createElement("img");
       clone.src = img.src;
       clone.alt = img.alt;
-      clone.style.display = "none";
       fullscreenSlides.appendChild(clone);
     });
     buildFullscreenDots(images.length);  // ← neu
@@ -911,12 +910,14 @@ document.querySelectorAll(".slider").forEach(slider => {
   }
 
   function showFullscreenSlide(i) {
-    const imgs = fullscreenSlides.querySelectorAll("img");
-    imgs.forEach((img, idx) => {
-      img.style.display = idx === i ? "block" : "none";
-    });
-    updateFullscreenDots();  // ← neu
-  }
+  const imgs = fullscreenSlides.querySelectorAll("img");
+
+  imgs.forEach((img, idx) => {
+    img.classList.toggle("active", idx === i);
+  });
+
+  updateFullscreenDots();
+}
 
   function getCurrentSliderIndex() {
     let idx = 0;

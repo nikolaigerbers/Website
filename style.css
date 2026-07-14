@@ -435,22 +435,6 @@ a:active {
   align-items: center;
   justify-content: center;
 }
-.slides {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-width: 0;
-}
-.slides img {
-  display: none;
-  width: 100%;
-  max-height: 90vh;   /* ← Desktop: großzügig */
-  object-fit: contain;
-}
-.slides img.active {
-  display: block;
-}
 
 /* Pfeile */
 .slider-btn {
@@ -702,18 +686,29 @@ a:active {
   display: flex;
 }
 
+.slides,
 .fullscreen-slides {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-width: 0;
+  position: relative;
 }
 
+.slides img,
 .fullscreen-slides img {
-  max-width: 100%;
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 100%;
   max-height: 90vh;
   object-fit: contain;
+
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.35s ease;
+}
+
+.slides img.active,
+.fullscreen-slides img.active {
+  opacity: 1;
+  visibility: visible;
 }
 
 /* Schließen-Button */
