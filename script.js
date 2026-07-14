@@ -61,14 +61,21 @@ function showSlide(newIndex) {
   // Erstes Bild beim Laden anzeigen
   if (
     oldIndex === newIndex &&
-    !images[newIndex].classList.contains("active")
+    !imgs[newIndex].classList.contains("active")
   ) {
 
-    images[newIndex].classList.add("active");
-    images[newIndex].style.transform = "translateX(0)";
-    images[newIndex].style.opacity = "1";
+    imgs[newIndex].classList.add("active");
+    imgs[newIndex].style.transform = "translateX(0)";
+    imgs[newIndex].style.opacity = "1";
 
-    updateDots();
+    // NEU: Inline-Styles wieder entfernen, sonst blockieren sie
+    // beim ersten Next/Prev die exit-left/exit-right Klassen
+    requestAnimationFrame(() => {
+      imgs[newIndex].style.transform = "";
+      imgs[newIndex].style.opacity = "";
+    });
+
+    updateFullscreenDots();
     return;
 
   }
@@ -148,23 +155,20 @@ function showSlide(newIndex) {
 
   setTimeout(() => {
 
-
     current.classList.remove(
       "active",
       "exit-left",
       "exit-right"
     );
 
-
     current.style.transform = "";
     current.style.opacity = "";
 
+    next.style.transform = "";   // NEU: sonst bleibt translateX(0) inline stehen
+                                  // und blockiert beim nächsten Wechsel die
+                                  // exit-Klasse dieses Bildes
 
-    next.style.transform = "";
-
-
-    updateDots();
-
+    updateFullscreenDots();
 
   }, 400);
 
