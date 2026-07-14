@@ -19,6 +19,8 @@ productSliders.forEach(slider => {
 
   let index = 0;
 
+images[0]?.classList.add("active");
+
   // Dots aufbauen
   if (dotsContainer) {
     images.forEach((_, i) => {
@@ -50,6 +52,16 @@ function showSlide(i) {
 
   const current = images[index];
   const next = images[i];
+
+  // erster Start
+  if (!current.classList.contains("active")) {
+
+    next.classList.add("active");
+    next.style.transform = "translateX(0)";
+    updateDots();
+    return;
+
+  }
 
   if (current === next) return;
 
