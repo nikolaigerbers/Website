@@ -616,7 +616,7 @@ a:active {
 /* Fullscreen Button */
 .fullscreen-btn {
   position: absolute;
-  bottom: 0;
+  bottom: 16px;
   right: 36px;
   background: none;
   border: none;
@@ -1124,7 +1124,7 @@ a:active {
 
 .slider-dots {
   position: absolute;
-  bottom: 0;
+  bottom: 16px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
