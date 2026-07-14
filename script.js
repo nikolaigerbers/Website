@@ -48,20 +48,24 @@ images[0]?.classList.add("active");
   let direction = 1;
 
 
-function showSlide(i) {
+function showSlide(newIndex) {
 
-  const current = images[index];
-  const next = images[i];
+  const oldIndex = index;
 
-  // erster Start
-  if (!current.classList.contains("active")) {
+  // Erstes Bild initial anzeigen
+  if (oldIndex === newIndex && !images[newIndex].classList.contains("active")) {
 
-    next.classList.add("active");
-    next.style.transform = "translateX(0)";
+    images[newIndex].classList.add("active");
+    images[newIndex].style.transform = "translateX(0)";
+    images[newIndex].style.opacity = "1";
+
     updateDots();
     return;
-
   }
+
+
+  const current = images[oldIndex];
+  const next = images[newIndex];
 
   if (current === next) return;
 
@@ -72,6 +76,7 @@ function showSlide(i) {
     "exit-right"
   );
 
+
   next.style.transform = direction > 0
     ? "translateX(100%)"
     : "translateX(-100%)";
@@ -80,7 +85,10 @@ function showSlide(i) {
   next.classList.add("active");
 
 
-  // Animation starten
+  // Wichtig: Index sofort aktualisieren
+  index = newIndex;
+
+
   requestAnimationFrame(() => {
 
     current.classList.add(
@@ -89,16 +97,12 @@ function showSlide(i) {
         : "exit-right"
     );
 
+
     next.style.transform = "translateX(0)";
 
   });
 
 
-  // Index sofort aktualisieren
-  index = i;
-
-
-  // Nach Animation aufräumen
   setTimeout(() => {
 
     current.classList.remove(
@@ -108,23 +112,7 @@ function showSlide(i) {
     );
 
     current.style.transform = "";
-
-    images.forEach((img, idx) => {
-
-      if (idx !== index) {
-
-        img.classList.remove(
-          "active",
-          "exit-left",
-          "exit-right"
-        );
-
-        img.style.transform = "";
-
-      }
-
-    });
-
+    current.style.opacity = "";
 
     updateDots();
 
@@ -136,21 +124,21 @@ function showSlide(i) {
 
   nextBtn?.addEventListener("click", () => {
 
-    direction = 1;
+  direction = 1;
 
-    index = (index + 1) % images.length;
-
-    showSlide(index);
+  showSlide(
+    (index + 1) % images.length
+  );
 
 });
 
   prevBtn?.addEventListener("click", () => {
 
-    direction = -1;
+  direction = -1;
 
-    index = (index - 1 + images.length) % images.length;
-
-    showSlide(index);
+  showSlide(
+    (index - 1 + images.length) % images.length
+  );
 
 });
 
