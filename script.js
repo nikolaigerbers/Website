@@ -40,24 +40,96 @@ productSliders.forEach(slider => {
     });
   }
 
-  function showSlide(i) {
-  images.forEach((img, idx) => {
-    img.classList.toggle("active", idx === i);
+  let direction = 1;
+
+
+function showSlide(i) {
+
+  const oldIndex = index;
+  const newIndex = i;
+
+
+  if (oldIndex === newIndex) return;
+
+
+  const current = images[oldIndex];
+  const next = images[newIndex];
+
+
+  next.classList.remove("exit-left", "exit-right");
+
+  if (direction > 0) {
+
+    next.style.transform = "translateX(100%)";
+
+  } else {
+
+    next.style.transform = "translateX(-100%)";
+
+  }
+
+
+  next.classList.add("active");
+
+
+  requestAnimationFrame(() => {
+
+    current.classList.add(
+      direction > 0 ? "exit-left" : "exit-right"
+    );
+
+    next.style.transform = "translateX(0)";
+
   });
-  updateDots();
+
+
+  setTimeout(() => {
+
+    images.forEach((img, idx)=>{
+
+      if(idx !== newIndex){
+
+        img.classList.remove(
+          "active",
+          "exit-left",
+          "exit-right"
+        );
+
+        img.style.transform = "";
+
+      }
+
+    });
+
+
+    updateDots();
+
+
+  },400);
+
 }
 
   showSlide(index);
 
   nextBtn?.addEventListener("click", () => {
+
+    direction = 1;
+
     index = (index + 1) % images.length;
+
     showSlide(index);
-  });
+
+});
 
   prevBtn?.addEventListener("click", () => {
+
+    direction = -1;
+
     index = (index - 1 + images.length) % images.length;
+
     showSlide(index);
-  });
+
+});
 
   // Touch-Swipe
   let touchStartX = 0;
