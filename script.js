@@ -18,6 +18,11 @@ productSliders.forEach(slider => {
   const dotsContainer = slider.closest(".left")?.querySelector(".slider-dots");
 
   let index = 0;
+slider.currentIndex = () => index;
+slider.goToSlide = (i) => {
+  direction = i > index ? 1 : -1;
+  showSlide(i);
+};
 
 images[0]?.classList.add("active");
 
@@ -1123,6 +1128,10 @@ requestAnimationFrame(() => {
 
 
   currentIndex = newIndex;
+
+requestAnimationFrame(() => {
+  slider.goToSlide?.(currentIndex);
+});
 
 
   requestAnimationFrame(() => {
