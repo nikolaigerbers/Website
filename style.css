@@ -688,29 +688,28 @@ a:active {
 
 .slides,
 .fullscreen-slides {
-    position: relative;
-    width: 100%;
-    height: 70vh;   /* oder eine andere feste Höhe */
+  position: relative;
 }
 
 .slides img,
 .fullscreen-slides img {
-  position: absolute;
-  inset: 0;
-  margin: auto;
   width: 100%;
   max-height: 90vh;
   object-fit: contain;
 
   opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.35s ease;
+  transition: opacity .35s ease;
+}
+
+.slides img:not(.active),
+.fullscreen-slides img:not(.active) {
+  display: none;
 }
 
 .slides img.active,
 .fullscreen-slides img.active {
+  display: block;
   opacity: 1;
-  visibility: visible;
 }
 
 /* Schließen-Button */
