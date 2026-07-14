@@ -26,9 +26,12 @@ productSliders.forEach(slider => {
       dot.classList.add("dot");
       if (i === 0) dot.classList.add("active");
       dot.addEventListener("click", () => {
-        index = i;
-        showSlide(index);
-      });
+
+  direction = i > index ? 1 : -1;
+
+  showSlide(i);
+
+});
       dotsContainer.appendChild(dot);
     });
   }
@@ -46,30 +49,33 @@ productSliders.forEach(slider => {
 function showSlide(i) {
 
   const oldIndex = index;
-  const newIndex = i;
 
+  // Initialisierung
+  if (!images[oldIndex].classList.contains("active")) {
 
-  if (oldIndex === newIndex) return;
+    images[i].classList.add("active");
+    images[i].style.transform = "translateX(0)";
 
-
-  const current = images[oldIndex];
-  const next = images[newIndex];
-
-
-  next.classList.remove("exit-left", "exit-right");
-
-  if (direction > 0) {
-
-    next.style.transform = "translateX(100%)";
-
-  } else {
-
-    next.style.transform = "translateX(-100%)";
+    updateDots();
+    return;
 
   }
 
 
+  const current = images[oldIndex];
+  const next = images[i];
+
+
+  if (current === next) return;
+
+
+  next.classList.remove("exit-left", "exit-right");
   next.classList.add("active");
+
+
+  next.style.transform = direction > 0
+    ? "translateX(100%)"
+    : "translateX(-100%)";
 
 
   requestAnimationFrame(() => {
@@ -78,6 +84,7 @@ function showSlide(i) {
       direction > 0 ? "exit-left" : "exit-right"
     );
 
+
     next.style.transform = "translateX(0)";
 
   });
@@ -85,27 +92,20 @@ function showSlide(i) {
 
   setTimeout(() => {
 
-    images.forEach((img, idx)=>{
+    current.classList.remove(
+      "active",
+      "exit-left",
+      "exit-right"
+    );
 
-      if(idx !== newIndex){
-
-        img.classList.remove(
-          "active",
-          "exit-left",
-          "exit-right"
-        );
-
-        img.style.transform = "";
-
-      }
-
-    });
-
+    current.style.transform = "";
 
     updateDots();
 
+  }, 400);
 
-  },400);
+
+  index = i;
 
 }
 
@@ -142,11 +142,18 @@ function showSlide(i) {
     const diff = touchStartX - e.changedTouches[0].clientX;
     if (Math.abs(diff) < 40) return;
     if (diff > 0) {
-      index = (index + 1) % images.length;
-    } else {
-      index = (index - 1 + images.length) % images.length;
-    }
-    showSlide(index);
+
+  direction = 1;
+
+  showSlide((index + 1) % images.length);
+
+} else {
+
+  direction = -1;
+
+  showSlide((index - 1 + images.length) % images.length);
+
+}
   }, { passive: true });
 });
 
