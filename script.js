@@ -942,6 +942,14 @@ document.querySelectorAll(".slider").forEach(slider => {
     document.body.style.overflow = "";
   });
 
+  // ESC schließt den Fullscreen
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && overlay.classList.contains("open")) {
+    overlay.classList.remove("open");
+    document.body.style.overflow = "";
+  }
+});
+
   overlay?.addEventListener("click", (e) => {
     if (e.target === overlay) {
       overlay.classList.remove("open");
