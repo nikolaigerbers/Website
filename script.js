@@ -48,48 +48,45 @@ productSliders.forEach(slider => {
 
 function showSlide(i) {
 
-  const oldIndex = index;
-
-  // Initialisierung
-  if (!images[oldIndex].classList.contains("active")) {
-
-    images[i].classList.add("active");
-    images[i].style.transform = "translateX(0)";
-
-    updateDots();
-    return;
-
-  }
-
-
-  const current = images[oldIndex];
+  const current = images[index];
   const next = images[i];
-
 
   if (current === next) return;
 
 
-  next.classList.remove("exit-left", "exit-right");
-  next.classList.add("active");
-
+  // Zielbild vorbereiten
+  next.classList.remove(
+    "exit-left",
+    "exit-right"
+  );
 
   next.style.transform = direction > 0
     ? "translateX(100%)"
     : "translateX(-100%)";
 
 
+  next.classList.add("active");
+
+
+  // Animation starten
   requestAnimationFrame(() => {
 
     current.classList.add(
-      direction > 0 ? "exit-left" : "exit-right"
+      direction > 0
+        ? "exit-left"
+        : "exit-right"
     );
-
 
     next.style.transform = "translateX(0)";
 
   });
 
 
+  // Index sofort aktualisieren
+  index = i;
+
+
+  // Nach Animation aufräumen
   setTimeout(() => {
 
     current.classList.remove(
@@ -100,12 +97,26 @@ function showSlide(i) {
 
     current.style.transform = "";
 
+    images.forEach((img, idx) => {
+
+      if (idx !== index) {
+
+        img.classList.remove(
+          "active",
+          "exit-left",
+          "exit-right"
+        );
+
+        img.style.transform = "";
+
+      }
+
+    });
+
+
     updateDots();
 
   }, 400);
-
-
-  index = i;
 
 }
 
