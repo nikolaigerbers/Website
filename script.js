@@ -1012,9 +1012,12 @@ document.querySelectorAll(".slider").forEach(slider => {
       const dot = document.createElement("span");
       dot.classList.add("dot");
       dot.addEventListener("click", () => {
-        currentIndex = i;
-        showFullscreenSlide(currentIndex);
-        updateFullscreenDots();
+        if (i === currentIndex) return; // schon aktiv, nichts zu tun
+
+        // Richtung anhand Ziel-Index bestimmen
+        fullscreenDirection = i > currentIndex ? 1 : -1;
+
+        showFullscreenSlide(i); // currentIndex NICHT vorher überschreiben!
       });
       fullscreenDotsContainer.appendChild(dot);
     }
