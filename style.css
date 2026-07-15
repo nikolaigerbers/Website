@@ -234,9 +234,7 @@ a:active {
   font-size: 14px;
   color: #000000;
 }
-.caption p:nth-child(1) {
-  color: #888;
-}
+
 .caption p:nth-child(2) {
   font-weight: bold;
 }
