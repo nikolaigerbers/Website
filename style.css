@@ -1511,6 +1511,7 @@ a:active {
   align-items: center;
   max-width: 900px;
   margin: 0 auto;
+  padding: 0 50px;   /* ← neu: Platz für die Buttons links/rechts */
 }
 
 .neuheiten-track-wrapper {
