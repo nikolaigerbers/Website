@@ -1511,7 +1511,6 @@ a:active {
   align-items: center;
   max-width: 900px;
   margin: 0 auto;
-  padding: 0 50px;   /* ← neu: Platz für die Buttons links/rechts */
 }
 
 .neuheiten-track-wrapper {
@@ -1553,12 +1552,12 @@ a:active {
 }
 
 .neuheiten-slider .neuheiten-prev {
-  left: 10;
+  left: 0;
   transform: translateY(-50%) rotate(-90deg);
 }
 
 .neuheiten-slider .neuheiten-next {
-  right: 10;
+  right: 0;
   transform: translateY(-50%) rotate(90deg);
 }
 
