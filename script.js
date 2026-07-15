@@ -1072,15 +1072,29 @@ requestAnimationFrame(() => {
     !imgs[newIndex].classList.contains("active")
   ) {
 
-    imgs[newIndex].classList.add("active");
-    imgs[newIndex].style.transform = "translateX(0)";
-    imgs[newIndex].style.opacity = "1";
+    const firstImg = imgs[newIndex];
 
-    // NEU: Inline-Styles wieder entfernen, sonst blockieren sie
+    // Transition hart deaktivieren, damit der CSS-Ausgangswert
+    // (z.B. translateX(100%) für inaktive Bilder) NICHT animiert
+    // zu translateX(0) übergeht, sondern sofort gilt
+    firstImg.style.transition = "none";
+
+    firstImg.classList.add("active");
+    firstImg.style.transform = "translateX(0)";
+    firstImg.style.opacity = "1";
+
+    // Reflow erzwingen, damit der Browser die Werte ohne
+    // Übergang übernimmt, bevor die Transition wieder aktiv wird
+    firstImg.offsetHeight;
+
+    // Transition wieder freigeben für alle folgenden Wechsel
+    firstImg.style.transition = "";
+
+    // Inline-Styles wieder entfernen, sonst blockieren sie
     // beim ersten Next/Prev die exit-left/exit-right Klassen
     requestAnimationFrame(() => {
-      imgs[newIndex].style.transform = "";
-      imgs[newIndex].style.opacity = "";
+      firstImg.style.transform = "";
+      firstImg.style.opacity = "";
     });
 
     updateFullscreenDots();
