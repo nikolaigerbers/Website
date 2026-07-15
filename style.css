@@ -1511,6 +1511,8 @@ a:active {
   align-items: center;
   max-width: clamp(700px, 85vw, 1100px);
   margin: 0 auto;
+  padding: 0 40px;      /* NEU: Platz für die Buttons */
+  box-sizing: border-box; /* NEU: Padding wird in max-width eingerechnet */
 }
 
 .neuheiten-track-wrapper {
