@@ -503,6 +503,16 @@ a:active {
   color: #888;
 }
 
+/* Optionen bleiben schwarz, auch wenn die Box gehovert wird */
+.filter-bar .filter-box:hover .dropdown li {
+  color: #000;
+}
+
+/* Erst beim direkten Hover auf die einzelne Option wird sie grau */
+.filter-bar .filter-box:hover .dropdown li:hover {
+  color: #888;
+}
+
 .filter-box-header {
   display: flex;
   width: 100%;
