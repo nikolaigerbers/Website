@@ -1593,3 +1593,12 @@ html.touch-device .neuheiten-dots .dot.active:hover {
   border-color: #000;
   background: #000;
 }
+
+html.touch-device .neuheiten-track .grid-item a:active img,
+html.touch-device .neuheiten-track .grid-item img:active {
+  transform: none;
+}
+
+html.touch-device .neuheiten-slider .slider-btn:active {
+  color: #000;
+}
