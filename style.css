@@ -1509,6 +1509,8 @@ a:active {
 .neuheiten-slider {
   position: relative;
   align-items: center;
+  max-width: 900px;   /* ← neu: schmalerer Bereich = mehr Rand zum Fenster */
+  margin: 0 auto;      /* ← neu: zentriert den Slider selbst */
 }
 
 .neuheiten-track-wrapper {
@@ -1518,8 +1520,8 @@ a:active {
 
 .neuheiten-track {
   display: flex;
-  gap: 30px;
-      /* mehr Abstand zum linken/rechten Rand */
+  gap: 20px;            /* ← reduziert von 30px, für "nah beieinander" */
+  justify-content: center; /* ← neu: zentriert Karten, falls weniger als Platzangebot */
 }
 
 .neuheiten-track .grid-item {
