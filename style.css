@@ -1511,7 +1511,7 @@ a:active {
   align-items: center;
   max-width: clamp(700px, 85vw, 1100px);
   margin: 0 auto;
-  padding: 0 6  60px;      /* NEU: Platz für die Buttons */
+  padding: 0 60px;      /* NEU: Platz für die Buttons */
   box-sizing: border-box; /* NEU: Padding wird in max-width eingerechnet */
 }
 
