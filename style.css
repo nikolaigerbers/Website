@@ -1574,3 +1574,22 @@ a:active {
     height: 100%;
     object-fit: cover;
 }
+
+html.touch-device .neuheiten-track .grid-item a:hover img,
+html.touch-device .neuheiten-track .grid-item img:hover {
+  transform: none;
+}
+
+html.touch-device .neuheiten-slider .slider-btn:hover {
+  color: #000;
+}
+
+html.touch-device .neuheiten-dots .dot:hover {
+  border-color: #000;
+  background: transparent;
+}
+
+html.touch-device .neuheiten-dots .dot.active:hover {
+  border-color: #000;
+  background: #000;
+}
