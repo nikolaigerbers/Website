@@ -1509,7 +1509,7 @@ a:active {
 .neuheiten-slider {
   position: relative;
   align-items: center;
-  max-width: 700px;
+  max-width: auto;
   margin: 0 auto;
 }
 
