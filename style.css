@@ -1586,12 +1586,6 @@ html.touch-device .neuheiten-track .grid-item a:active {
   -webkit-text-fill-color: #000 !important;
 }
 
-html.touch-device .neuheiten-track .grid-item a:hover .caption p:nth-child(1),
-html.touch-device .neuheiten-track .grid-item a:active .caption p:nth-child(1) {
-  color: #888 !important;
-  -webkit-text-fill-color: #888 !important;
-}
-
 html.touch-device .neuheiten-slider .slider-btn:hover {
   color: #000;
 }
