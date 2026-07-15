@@ -1520,7 +1520,8 @@ a:active {
 
 .neuheiten-track {
   display: flex;
-  /* gap kommt jetzt dynamisch aus JS, siehe setCardWidths() */
+  gap: 20px;
+  /* KEIN justify-content hier – bricht die JS-Offset-Berechnung */
 }
 
 .neuheiten-track .grid-item {
