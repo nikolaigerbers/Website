@@ -485,7 +485,6 @@ a:active {
   flex: 1;
   padding: 12px 20px;
   border: 1px solid black;
-  border-radius: 4px;
   cursor: pointer;
   background: white;
   text-align: center;
