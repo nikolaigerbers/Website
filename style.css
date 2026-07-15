@@ -1553,12 +1553,12 @@ a:active {
 }
 
 .neuheiten-slider .neuheiten-prev {
-  left: 0;
+  left: 10;
   transform: translateY(-50%) rotate(-90deg);
 }
 
 .neuheiten-slider .neuheiten-next {
-  right: 0;
+  right: 10;
   transform: translateY(-50%) rotate(90deg);
 }
 
