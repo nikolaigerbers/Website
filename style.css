@@ -1494,16 +1494,12 @@ a:active {
 .neuheiten-track-wrapper {
   width: 100%;
   overflow: hidden;
-  display: flex;
-  justify-content: center;
-  padding: 0 60px;
-  box-sizing: border-box;
 }
 
 .neuheiten-track {
   display: flex;
-  gap: 12px;
-  margin: 0 auto;
+  gap: 30px;
+      /* mehr Abstand zum linken/rechten Rand */
 }
 
 .neuheiten-track .grid-item {
