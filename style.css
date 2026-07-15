@@ -1298,15 +1298,11 @@ a:active {
 }
 
   .screen-2 {
-    height: 100dvh;
     display: flex;
     flex-direction: column;
-    overflow: hidden;
   }
 
   .main-main {
-    flex: 1;
-    min-height: 0;
     display: flex;
     flex-direction: column;
     margin: 0 auto;
@@ -1314,36 +1310,12 @@ a:active {
 
   .site-footer {
     flex-shrink: 0;
-    margin-top: 0;
-  }
-
-  .neuheiten-track-wrapper {
-    flex: 1;
-    min-height: 0;
-  }
-
-  .neuheiten-slider {
-    flex: 1;
-    min-height: 0;
-    align-items: stretch;
-  }
-
-  .neuheiten-track {
-    gap: 10px;
-    align-items: stretch;
+    margin-top: 40px;
   }
 
   .neuheiten-track .grid-item {
     display: flex;
     flex-direction: column;
-  }
-
-  .neuheiten-track .grid-item img {
-    flex: 1;
-    min-height: 0;
-    width: 100%;
-    height: 0;
-    object-fit: contain;
   }
 
   .neuheiten-track .grid-item .caption {
