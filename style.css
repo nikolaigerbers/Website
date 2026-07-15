@@ -485,6 +485,7 @@ a:active {
   flex: 1;
   padding: 12px 20px;
   border: 1px solid black;
+  border-radius: 4px;
   cursor: pointer;
   background: white;
   text-align: center;
@@ -493,6 +494,16 @@ a:active {
   justify-content: space-between;
   min-height: 2lh;           /* ← Platz für 2 Zeilen reservieren */
 }
+
+.filter-bar .filter-box:hover {
+  color: #888;
+  border-color: #888;
+}
+
+.filter-bar .filter-box:hover .clear-btn {
+  color: #888;
+}
+
 .filter-box-header {
   display: flex;
   width: 100%;
