@@ -1299,3 +1299,40 @@ document.addEventListener("keydown", (e) => {
 }
   }, { passive: true });
 });
+
+function getGap() {
+    return parseFloat(getComputedStyle(track).gap) || 0;
+  }
+
+  const PREFERRED_GAP = 20; // dein bisheriger Wunsch-Abstand
+  const MIN_GAP = 6;        // wie eng darf es im Notfall werden
+
+  function computeLayout() {
+    const count = getCount();
+    const wrapperWidth = wrapper.offsetWidth;
+
+    let gap = PREFERRED_GAP;
+    let cardWidth = Math.floor((wrapperWidth - gap * (count - 1)) / count);
+    let total = cardWidth * count + gap * (count - 1);
+
+    // Falls durch Rundung zu breit → Gap schrittweise verkleinern
+    while (total > wrapperWidth && gap > MIN_GAP) {
+      gap--;
+      cardWidth = Math.floor((wrapperWidth - gap * (count - 1)) / count);
+      total = cardWidth * count + gap * (count - 1);
+    }
+
+    return { cardWidth, gap };
+  }
+
+  function getCardWidth() {
+    return computeLayout().cardWidth;
+  }
+
+  function setCardWidths() {
+    const { cardWidth, gap } = computeLayout();
+    track.style.gap = gap + "px";
+    track.querySelectorAll(".grid-item").forEach(item => {
+      item.style.width = cardWidth + "px";
+    });
+  }
