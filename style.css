@@ -1702,33 +1702,37 @@ html.touch-device .neuheiten-slider .slider-btn:active {
 
 @media (max-width:1000px){
 
-.info-split{
-    grid-template-columns: 1fr; /* statt flex-direction: column */
+  .info-split{
+    grid-template-columns: 1fr;
     gap:40px;
-}
+  }
 
-.info-right{
+  .info-right{
     height:auto;
-    
-}
+  }
 
-.info-right img{
-    width:100%;
+  .info-right img{
+    width: 85%;        /* NEU: statt 100% */
+    max-width: 400px;  /* NEU: verhindert zu große Bilder auf Tablets */
     height:auto;
-}
+    margin: 0 auto;     /* NEU: zentriert das Bild */
+    display: block;     /* NEU: nötig, damit margin:auto wirkt */
+  }
 
-
-
-.info-image-horizontal{
+  .info-image-horizontal{
     flex:none;
-}
+  }
 
-.info-image-horizontal img{
+  .info-image-horizontal img{
+    width: 85%;         /* NEU */
+    max-width: 400px;   /* NEU */
     height:auto;
-}
+    margin: 0 auto;      /* NEU */
+    display: block;      /* NEU */
+  }
 
-.info-text p{
+  .info-text p{
     font-size:1rem;
-}
+  }
 
 }
