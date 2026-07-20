@@ -1608,10 +1608,10 @@ html.touch-device .neuheiten-slider .slider-btn:active {
 =========================== */
 
 .info-split{
-    display:flex;
+    display:grid;
+    grid-template-columns:1fr 1fr;
     gap:40px;
     align-items:stretch;
-    margin:60px 0;
 }
 
 /* beide Seiten exakt gleich */
