@@ -1696,36 +1696,30 @@ html.touch-device .neuheiten-slider .slider-btn:active {
 
 @media (max-width:768px){
 
-    .info-split{
+.info-split{
+    grid-template-columns: 1fr; /* statt flex-direction: column */
+    gap:40px;
+}
 
-        flex-direction:column;
-        gap:40px;
-    }
+.info-right{
+    height:auto;
+}
 
-    .info-right{
+.info-right img{
+    width:100%;
+    height:auto;
+}
 
-        height:auto;
-    }
+.info-image-horizontal{
+    flex:none;
+}
 
-    .info-right img{
+.info-image-horizontal img{
+    height:auto;
+}
 
-        width:100%;
-        height:auto;
-    }
-
-    .info-image-horizontal{
-
-        flex:none;
-    }
-
-    .info-image-horizontal img{
-
-        height:auto;
-    }
-
-    .info-text p{
-
-        font-size:1rem;
-    }
+.info-text p{
+    font-size:1rem;
+}
 
 }
