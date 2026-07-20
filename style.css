@@ -1700,7 +1700,7 @@ html.touch-device .neuheiten-slider .slider-btn:active {
    MOBILE
 =========================== */
 
-@media (max-width:800px){
+@media (max-width:1000px){
 
 .info-split{
     grid-template-columns: 1fr; /* statt flex-direction: column */
