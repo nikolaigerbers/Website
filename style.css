@@ -1712,7 +1712,7 @@ html.touch-device .neuheiten-slider .slider-btn:active {
   }
 
   .info-right img{
-    width: 85%;        /* NEU: statt 100% */
+    width: 95%;        /* NEU: statt 100% */
     max-width: 400px;  /* NEU: verhindert zu große Bilder auf Tablets */
     height:auto;
     margin: 0 auto;     /* NEU: zentriert das Bild */
@@ -1724,7 +1724,7 @@ html.touch-device .neuheiten-slider .slider-btn:active {
   }
 
   .info-image-horizontal img{
-    width: 85%;         /* NEU */
+    width: 95%;         /* NEU */
     max-width: 400px;   /* NEU */
     height:auto;
     margin: 0 auto;      /* NEU */
