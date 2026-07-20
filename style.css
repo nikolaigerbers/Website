@@ -1644,7 +1644,7 @@ html.touch-device .neuheiten-slider .slider-btn:active {
     /* passt sich der Fenstergröße an */
     font-size:clamp(0.95rem,0.35vw + 0.85rem,1.15rem);
 
-    line-height:1.7;
+    line-height:1.0;
 }
 
 .info-image-horizontal{
