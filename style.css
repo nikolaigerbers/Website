@@ -1604,10 +1604,9 @@ html.touch-device .neuheiten-slider .slider-btn:active {
 }
 
 .info-split {
-  display: flex;
-  gap: 40px;
-  align-items: stretch;
-  margin: 30px 0;
+    display: flex;
+    gap: 40px;
+    align-items: stretch;
 }
 
 .info-split-text,
@@ -1634,19 +1633,18 @@ html.touch-device .neuheiten-slider .slider-btn:active {
 
 /* Rechte Seite */
 .info-split-logo {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden; /* verhindert Überstand */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .info-blog-img-fill {
-  max-width: 100%;
-  max-height: 100%;   /* niemals höher als die Spalte */
-  width: auto;
-  height: auto;
-  object-fit: contain;
-  display: block;
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    display: block;
 }
 
 @media (max-width: 768px) {
