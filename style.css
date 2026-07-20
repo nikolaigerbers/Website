@@ -1717,10 +1717,11 @@ html.touch-device .neuheiten-slider .slider-btn:active {
 @media (max-width:768px){
 
     .info-split{
-
-        flex-direction:column;
-        gap:40px;
-    }
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:40px;
+    align-items:stretch;
+}
 
     .info-right{
 
