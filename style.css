@@ -1612,14 +1612,11 @@ html.touch-device .neuheiten-slider .slider-btn:active {
 
 .info-split-logo {
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-start;
+  flex-direction: column;
   gap: 20px;
 }
 
 .info-split-logo p {
-  flex: 1;
   min-width: 0;
 }
 
