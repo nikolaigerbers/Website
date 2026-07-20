@@ -1602,3 +1602,42 @@ html.touch-device .neuheiten-track .grid-item img:active {
 html.touch-device .neuheiten-slider .slider-btn:active {
   color: #000;
 }
+
+/* ===== INFO-SPLIT BLOG-BILDER ===== */
+.info-split-text {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.info-split-logo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 20px;
+}
+
+.info-split-logo p {
+  flex: 1;
+  min-width: 0;
+}
+
+.info-blog-img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.info-split-logo .info-blog-img {
+  flex: 1;
+  min-width: 0;
+  object-fit: contain;
+}
+
+/* Mobile: Text-Bild-Zeile bei Seite 2 ebenfalls stapeln */
+@media (max-width: 768px) {
+  .info-split-logo {
+    flex-direction: column;
+  }
+}
