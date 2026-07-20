@@ -1603,21 +1603,19 @@ html.touch-device .neuheiten-slider .slider-btn:active {
   color: #000;
 }
 
-/* ===== INFO-SPLIT BLOG-BILDER ===== */
+/* ===== INFO-SPLIT: rechte Spalte auf Höhe der linken strecken ===== */
+.info-split {
+  display: flex;
+  gap: 40px;
+  align-items: stretch;   /* WICHTIG: statt center -> stretch */
+  margin: 30px 0;
+}
+
 .info-split-text {
+  flex: 1;
   display: flex;
   flex-direction: column;
   gap: 20px;
-}
-
-.info-split-logo {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.info-split-logo p {
-  min-width: 0;
 }
 
 .info-blog-img {
@@ -1626,15 +1624,26 @@ html.touch-device .neuheiten-slider .slider-btn:active {
   display: block;
 }
 
-.info-split-logo .info-blog-img {
+.info-split-logo {
   flex: 1;
+  display: flex;
   min-width: 0;
-  object-fit: contain;
 }
 
-/* Mobile: Text-Bild-Zeile bei Seite 2 ebenfalls stapeln */
+.info-blog-img-fill {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;   /* füllt die komplette Höhe ohne Verzerrung */
+  display: block;
+}
+
+/* Mobile: Cover-Verhalten ergibt keinen Sinn ohne feste Höhe -> normal skalieren */
 @media (max-width: 768px) {
-  .info-split-logo {
-    flex-direction: column;
+  .info-split {
+    align-items: normal;
+  }
+  .info-blog-img-fill {
+    height: auto;
+    object-fit: contain;
   }
 }
