@@ -1357,7 +1357,9 @@ a:active {
     gap: 6px;
     align-items: center;
   }
-
+  .footer-branding {
+    margin-top: 6px;
+  }
 
   .container {
     flex-direction: column;
