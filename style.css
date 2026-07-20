@@ -1603,16 +1603,19 @@ html.touch-device .neuheiten-slider .slider-btn:active {
   color: #000;
 }
 
-/* ===== INFO-SPLIT: rechte Spalte auf Höhe der linken strecken ===== */
 .info-split {
   display: flex;
   gap: 40px;
-  align-items: stretch;   /* WICHTIG: statt center -> stretch */
+  align-items: stretch;
   margin: 30px 0;
 }
 
-.info-split-text {
+.info-split-text,
+.info-split-logo {
   flex: 1;
+}
+
+.info-split-text {
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -1624,34 +1627,35 @@ html.touch-device .neuheiten-slider .slider-btn:active {
 }
 
 .info-blog-img {
-  max-width: 100%;
+  width: 100%;
   height: auto;
   display: block;
 }
 
+/* Rechte Seite */
 .info-split-logo {
-  flex: 1;
   display: flex;
-  justify-content: center;   /* NEU: zentriert das schmalere Bild horizontal */
-  align-items: stretch;
-  min-width: 0;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden; /* verhindert Überstand */
 }
 
 .info-blog-img-fill {
-  width: auto;              /* NEU: Breite passt sich automatisch an */
   max-width: 100%;
-  height: 100%;
-  object-fit: contain;      /* NEU: statt cover -> kein Beschneiden mehr */
+  max-height: 100%;   /* niemals höher als die Spalte */
+  width: auto;
+  height: auto;
+  object-fit: contain;
   display: block;
 }
 
-/* Mobile: Cover-Verhalten ergibt keinen Sinn ohne feste Höhe -> normal skalieren */
 @media (max-width: 768px) {
   .info-split {
-    align-items: normal;
+    flex-direction: column;
   }
+
   .info-blog-img-fill {
-    height: auto;
-    object-fit: contain;
+    max-height: none;
+    width: 100%;
   }
 }
