@@ -1604,16 +1604,18 @@ html.touch-device .neuheiten-slider .slider-btn:active {
 }
 
 .info-split {
-    display: flex;
-    gap: 40px;
-    align-items: stretch;
+  display: flex;
+  gap: 40px;
+  align-items: stretch; /* sorgt für gleiche Höhe beider Spalten */
 }
 
 .info-split-text,
 .info-split-logo {
   flex: 1;
+  min-width: 0; /* verhindert Overflow-Probleme bei Flex-Kindern */
 }
 
+/* Linke Seite: Text oben, Querformatbild unten */
 .info-split-text {
   display: flex;
   flex-direction: column;
@@ -1631,22 +1633,23 @@ html.touch-device .neuheiten-slider .slider-btn:active {
   display: block;
 }
 
-/* Rechte Seite */
+/* Rechte Seite: Hochformatbild, füllt dynamisch die Höhe der linken Seite */
 .info-split-logo {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .info-blog-img-fill {
-    max-width: 100%;
-    max-height: 635px;
-    width: auto;
-    height: auto;
-    object-fit: contain;
-    display: block;
+  max-width: 100%;
+  max-height: 100%;   /* <-- entscheidende Änderung: war vorher 635px */
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
 }
 
+/* Mobile: wieder untereinander */
 @media (max-width: 768px) {
   .info-split {
     flex-direction: column;
@@ -1655,5 +1658,6 @@ html.touch-device .neuheiten-slider .slider-btn:active {
   .info-blog-img-fill {
     max-height: none;
     width: 100%;
+    height: auto;
   }
 }
