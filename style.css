@@ -1635,16 +1635,14 @@ html.touch-device .neuheiten-slider .slider-btn:active {
 }
 
 .info-text p{
+  margin: 0;
+  margin-top: -0.15em; /* NEU: gleicht die Zeilenhöhen-Leerfläche aus */
 
-    margin:0;
+  text-align:justify;
+  text-wrap:pretty;
 
-    text-align:justify;
-    text-wrap:pretty;
-
-    /* passt sich der Fenstergröße an */
-    font-size:clamp(0.95rem,0.35vw + 0.85rem,1.15rem);
-
-    line-height:1.15;
+  font-size:clamp(0.95rem,0.35vw + 0.85rem,1.15rem);
+  line-height:1.15;
 }
 
 .info-image-horizontal{
