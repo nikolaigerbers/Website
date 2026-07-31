@@ -304,6 +304,18 @@ const products = [
     link: "produkt_VitraPlasticChair.html",
     uploadDate: "2025-05-03",
     status: "verfügbar"
+  },
+  {
+    id: 7,
+    name: "USM Haller Sideboard",
+    manufacturer: "USM Haller",
+    designer: "Fritz Haller",
+    price: 860,
+    category: "Aufbewahrung",
+    image: "data/Produktbilder/USMHallerSideboard_1.png",
+    link: "produkt_USMHallerSideboard.html",
+    uploadDate: "2025-05-03",
+    status: "verfügbar"
   }
 ];
 
